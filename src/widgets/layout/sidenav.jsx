@@ -70,7 +70,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "white" : "text"}
-                      color={isActive ? "bg-[#274472]" : "bg-[#274472]"}
+                      color={isActive ? "bg-[#274472]" : "blue-gray"}
                       className={`flex transition-none items-center gap-4 px-4 capitalize ${isActive ? 'bg-[#274472] transition-none' : ''}`}
                       style={{ opacity: isActive ? 1 : undefined }}
                       fullWidth

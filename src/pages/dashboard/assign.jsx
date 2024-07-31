@@ -11,27 +11,7 @@ import {
 } from "@material-tailwind/react";
 import TruckImage from "./img/lorry.jpg";
 import Rating from 'react-rating-stars-component';
-
-const FleetOptions = [
-  {
-    id: 1,
-    image: TruckImage,
-    name: "Lowest carbon emission",
-    vehicle: "EcoTruck X1",
-  },
-  {
-    id: 2,
-    image: TruckImage,
-    name: "Lowest cost with moderate emissions",
-    vehicle: "EconomyTruck Y2",
-  },
-  {
-    id: 3,
-    image: TruckImage,
-    name: "Lowest Time with higher emissions",
-    vehicle: "SpeedTruck Z3",
-  },
-];
+import { CameraIcon } from '@heroicons/react/24/outline';
 
 function Assign() {
   const [freightData, setFreightData] = useState([
@@ -50,6 +30,34 @@ function Assign() {
   ]);
   const [view, setView] = useState("form"); // State to switch between views
   const fileInputRef = useRef(null);
+
+  const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState('');
+
+  const handleFileSelect = (file) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    setImageName(file.name); // Set the file name
+    reader.readAsDataURL(file);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      handleFileSelect(file);
+    }
+  };
+
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      handleFileSelect(file);
+    }
+  };
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -114,27 +122,62 @@ function Assign() {
             Your Fleet Options
           </Typography>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FleetOptions.map((option) => (
+  
               <Card
-                key={option.id}
                 className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
               >
                 <img
-                  src={option.image}
-                  alt={option.name}
+                  src={TruckImage}
+                  alt='truck'
                   className="h-40 w-full object-cover rounded-t-lg"
                 />
                 <div
                   className="p-4"
-                  style={{ backgroundColor: "#41729F", color: "white" }}
+                  style={{ backgroundColor: "#00b100", color: "white" }}
                 >
                   <Typography variant="body1" className="font-medium mb-1">
-                    {option.vehicle}
+                    EcoTruck X1
                   </Typography>
-                  <Typography variant="body2">{option.name}</Typography>
+                  <Typography variant="body2">Lowest carbon emission</Typography>
                 </div>
               </Card>
-            ))}
+              <Card
+                className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+              >
+                <img
+                  src={TruckImage}
+                  alt='truck'
+                  className="h-40 w-full object-cover rounded-t-lg"
+                />
+                <div
+                  className="p-4"
+                  style={{ backgroundColor: "#ffa500", color: "white" }}
+                >
+                  <Typography variant="body1" className="font-medium mb-1">
+                  EconomyTruck Y2
+                  </Typography>
+                  <Typography variant="body2">Lowest cost with moderate emissions</Typography>
+                </div>
+              </Card>
+              <Card
+                className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+              >
+                <img
+                  src={TruckImage}
+                  alt='truck'
+                  className="h-40 w-full object-cover rounded-t-lg"
+                />
+                <div
+                  className="p-4"
+                  style={{ backgroundColor: "#e21d1d", color: "white" }}
+                >
+                  <Typography variant="body1" className="font-medium mb-1">
+                  SpeedTruck Z3
+                  </Typography>
+                  <Typography variant="body2">Lowest Time with higher emissions</Typography>
+                </div>
+              </Card>
+  
           </div>
           <Typography variant="h5" className="text-gray-800 font-medium mt-8 mb-4">
             Assigned Driver
@@ -221,15 +264,6 @@ function Assign() {
       <Typography variant="h4" className="mb-6">
         Assign Freight
       </Typography>
-      <div className="flex space-x-4 mb-4">
-        {/* <Button
-          onClick={triggerFileInput}
-          style={{ backgroundColor: "#41729F", color: "white" }}
-          className="mb-4"
-        >
-          + Add Multiple Freights (csv)
-        </Button> */}
-      </div>
       <input
         type="file"
         accept=".csv"
@@ -251,17 +285,11 @@ function Assign() {
             <Typography variant="h6" color="blue-gray" className="mb-2">
               Enter Freight Details
             </Typography>
-            <Button
-              onClick={handleNext}
-              style={{ backgroundColor: "#41729F", color: "white" }}
-              className="mt-4 mb-4 rounded-lg"
-            >
-              Show vehicles
-            </Button>
+
           </CardHeader>
-          <CardBody className="flex flex-col gap-4">
-            
-            <div className="grid grid-cols-3 gap-4 items-center">
+          <CardBody className="flex flex-col grid grid-cols-1 xl:grid-cols-2 gap-4">
+            <div className="grid gap-4 " style={{ width: '150%' }}>
+            <div className="grid grid-cols-3 gap-4 items-center" >
               <Typography>Type</Typography>
               <Select
               label="Select an option"
@@ -381,16 +409,61 @@ function Assign() {
                 label="Delivery Date"
               />
             </div>
+            </div>
+            <div className="flex flex-col items-center mt-4 mb-4 ml-10" style={{ width: '100%' }}>
+              <div
+                className="h-60 border-2 border-dashed border-gray-300 rounded-lg p-4 flex items-center justify-center cursor-pointer"
+                onDrop={handleDrop}
+                onDragOver={(e) => e.preventDefault()}
+                onClick={() => document.getElementById('fileInput').click()}
+              >
+                {image ? (
+                  <img src={image} alt="Preview" className="object-cover w-[400px] h-full rounded-lg" />
+                ) : (
+                  <div className="text-center">
+                    <CameraIcon className="w-12 h-12 text-gray-400 mx-auto" />
+                    <p className="text-gray-500 mt-2">Drag & Drop your image here, or click to select one</p>
+                  </div>
+                )}
+                <input
+                  type="file"
+                  id="fileInput"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="mt-2 flex gap-2">
+                <div>
+                <span className="font-semibold">Freight Image:  </span>
+                </div>
+                {imageName && (
+                  <p className="text-gray-700">{imageName}</p> // Display the image name
+                )}
+              </div>
+            </div>
+
           </CardBody>
+          <div className="flex justify-between">
+          <Button
+              
+              style={{ backgroundColor: "#41729F", color: "white" }}
+              className="flex inline-block self-end justify-end mt-4 mb-4 rounded-lg"
+            >
+              Save
+            </Button>
+            <Button
+              onClick={handleNext}
+              style={{ backgroundColor: "#41729F", color: "white" }}
+              className="flex inline-block self-end justify-end mt-4 mb-4 rounded-lg"
+            >
+              Show vehicles
+            </Button>
+          </div>
+          
+      
         </Card>
       ))}
-      <Button
-        style={{ backgroundColor: "#41729F", color: "white" }}
-        className="mt-4 rounded-lg"
-        onClick={addNewFreight}
-      >
-        Add New Freight
-      </Button>
     </div>
   );
 }

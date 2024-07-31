@@ -67,11 +67,12 @@ const tripDetails = [
  
       ],
       location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119064.9002775156!2d78.99010926876952!3d21.161225995055403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x19b37d06d0bb3e2b!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1721724856740!5m2!1sen!2sin",
-      locationName: "Trip Location",
-      date: "2024-07-20",
+      locationName: "Trip Location A",
+      date: "20-04-2022",
       driverId: "D001",
       kmsTraveled: "150",
-      time: "3 hours"
+      time: "3 hours",
+       tripId:"543"
     },
     {
       vehicleId: "V002",
@@ -131,10 +132,11 @@ const tripDetails = [
       ],
       location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59491.8339050824!2d81.57787371713226!3d21.26198053410905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28dda23be28229%3A0x163ee1204ff9e240!2sRaipur%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1721726202977!5m2!1sen!2sin",
       locationName: "Trip Location B",
-      date: "2024-07-22",
+      date: "20-04-2022",
       driverId: "D003",
       kmsTraveled: "120",
-      time: "2 hours 30 minutes"
+      time: "2 hours 30 minutes",
+       tripId:"543"
     },
     {
       vehicleId: "V003",
@@ -195,10 +197,11 @@ const tripDetails = [
       ],
       location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113874.30006231663!2d75.7081570970491!3d26.88533996481472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1721726064550!5m2!1sen!2sin",
       locationName: "Trip Location C",
-      date: "2024-07-23",
+      date: "20-04-2022",
       driverId: "D004",
       kmsTraveled: "300",
-      time: "5 hours"
+      time: "5 hours",
+       tripId:"543"
     },
     {
       vehicleId: "V004",
@@ -258,10 +261,11 @@ const tripDetails = [
       ],
       location: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.9051038798!2d78.243236602612!3d17.412608636450027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1721726269423!5m2!1sen!2sin",
       locationName: "Trip Location D",
-      date: "2024-07-24",
+      date: "20-04-2022",
       driverId: "D005",
       kmsTraveled: "180",
-      time: "3 hours 15 minutes"
+      time: "3 hours 15 minutes",
+       tripId:"543"
     
     }
   ];
@@ -303,59 +307,45 @@ function Trip() {
                   </Typography>
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Typography variant="h6" className="text-lg font-semibold">
-                        Vehicle Information
+
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Vehicle ID:</strong> <span className="text-sm">{selectedTrip.vehicleId}</span> 
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Vehicle ID:</strong> {selectedTrip.vehicleId}
+                        <strong className="font-semibold text-sm">Chassis ID:</strong> <span className="text-sm">{selectedTrip.chassisId}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Chassis ID:</strong> {selectedTrip.chassisId}
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong>Model ID:</strong> {selectedTrip.modelId}
+                        <strong className="font-semibold text-sm">Model ID:</strong> <span className="text-sm"> {selectedTrip.modelId}</span>
                       </Typography>
                       <Typography variant="type">
-                        <strong>Fuel:</strong> {selectedTrip.fuel}
+                        <strong className="font-semibold text-sm">Fuel:</strong> <span className="text-sm">{selectedTrip.fuel}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Manufacturer:</strong> {selectedTrip.manufacturer}
+                        <strong className="font-semibold text-sm">Manufacturer:</strong> <span className="text-sm">{selectedTrip.manufacturer}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Location Name:</strong> {selectedTrip.locationName}
+                        <strong className="font-semibold text-sm">Location Name:</strong> <span className="text-sm">{selectedTrip.locationName}</span>
                       </Typography>
                     </div>
                     <hr className="my-4 border-gray-300" />
-                    {/* <div className="space-y-2">
-                      <Typography variant="h6" className="text-lg font-semibold">
-                        Operating Cost Details
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong>Monthly Fuel Cost:</strong> {selectedTrip.operatingCost.fuel}
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong>Monthly Maintenance Cost:</strong> {selectedTrip.operatingCost.maintenance}
-                      </Typography>
-                    </div> */}
-                    {/* <hr className="my-4 border-gray-300" /> */}
                     <div className="space-y-2">
                       <Typography variant="h6" className="text-lg font-semibold">
                         Total Cost
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Fuel Cost:</strong> {selectedTrip.operatingCost.fuel}
+                        <strong className="font-semibold text-sm">Fuel Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.fuel}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Maintenance Cost:</strong> {selectedTrip.operatingCost.maintenance}
+                        <strong className="font-semibold text-sm">Maintenance Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.maintenance}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Driver Cost:</strong> {selectedTrip.operatingCost.drivercost}
+                        <strong className="font-semibold text-sm">Driver Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.drivercost}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Toll :</strong> {selectedTrip.operatingCost.toll}
+                        <strong className="font-semibold text-sm">Toll :</strong>  <span className="text-sm">{selectedTrip.operatingCost.toll}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Total Estimation:</strong> {selectedTrip.operatingCost.total}
+                        <strong className="font-semibold text-sm">Total Estimation:</strong> <span className="text-sm"> {selectedTrip.operatingCost.total}</span>
                       </Typography>
                     </div>
                     <hr className="my-4 border-gray-300" />
@@ -364,19 +354,19 @@ function Trip() {
                         Driver Behavior
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Driver Id:</strong> {selectedTrip.driverBehavior.driverid}
+                        <strong className="font-semibold text-sm">Driver Id:</strong> <span className="text-sm"> {selectedTrip.driverBehavior.driverid}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Name:</strong> {selectedTrip.driverBehavior.name}
+                        <strong className="font-semibold text-sm">Name:</strong>  <span className="text-sm">{selectedTrip.driverBehavior.name}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Speed:</strong> {selectedTrip.driverBehavior.speed}
+                        <strong className="font-semibold text-sm">Speed:</strong>  <span className="text-sm">{selectedTrip.driverBehavior.speed}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Harsh Braking:</strong> {selectedTrip.driverBehavior.harshBraking}
+                        <strong className="font-semibold text-sm">Harsh Braking:</strong> <span className="text-sm"> {selectedTrip.driverBehavior.harshBraking}</span>
                       </Typography>
                       <Typography variant="paragraph">
-                        <strong>Idling:</strong> {selectedTrip.driverBehavior.idling}
+                        <strong className="font-semibold text-sm">Idling:</strong>  <span className="text-sm">{selectedTrip.driverBehavior.idling}</span>
                       </Typography>
                     </div>
                   </div>
@@ -388,7 +378,7 @@ function Trip() {
             <div className="lg:w-1/2 flex flex-col gap-6 ">
               <Card className="w-full">
                 <CardBody>
-                  <Typography variant="h5" className="mb-2 flex items-center">
+                  <Typography variant="h6" className="mb-2 flex items-center">
                     <ShieldCheckIcon className="h-6 w-6 mr-2" />
                     Freight Details
                   </Typography>
@@ -396,19 +386,19 @@ function Trip() {
                     selectedTrip.freight.map(freight => (
                       <div key={freight.id} className="mb-2">
                         <Typography variant="paragraph">
-                          <strong>Freight ID:</strong> {freight.id}
+                          <strong className="font-semibold text-sm">Freight ID:</strong> <span className="text-sm">{freight.id}</span>
                         </Typography>
                         <Typography variant="paragraph">
-                          <strong>Status:</strong> {freight.status}
+                          <strong className="font-semibold text-sm">Status:</strong> <span className="text-sm">{freight.status}</span>
                         </Typography>
                         <Typography variant="paragraph">
-                          <strong>Load:</strong> {freight.load || "N/A"}
+                          <strong className="font-semibold text-sm">Load:</strong> <span className="text-sm">{freight.load || "N/A"}</span>
                         </Typography>
                         <Typography variant="paragraph">
-                          <strong>Type of Goods:</strong> {freight.goodsType || "N/A"}
+                          <strong className="font-semibold text-sm">Type of Goods:</strong> <span className="text-sm">{freight.goodsType || "N/A"}</span>
                         </Typography>
                         <Typography variant="paragraph">
-                          <strong>Dimensions:</strong> {freight.dimensions || "N/A"}
+                          <strong className="font-semibold text-sm">Dimensions:</strong> <span className="text-sm">{freight.dimensions || "N/A"}</span>
                         </Typography>
                       </div>
                     ))
@@ -434,9 +424,6 @@ function Trip() {
           <Typography variant="paragraph">
             <strong className="font-semibold text-sm">Description:</strong> {log.description}
           </Typography>
-          {/* <Typography variant="paragraph">
-            <strong>Status:</strong> {log.status}
-          </Typography> */}
         </div>
       ))
     ) : (
@@ -456,7 +443,7 @@ function Trip() {
     <img
       src="/img/truck4.webp"
       alt="Analysis"
-      className="h-80 w-100 object-cover rounded-lg border border-gray-200"
+      className="h-[200px] w-100 object-cover rounded-lg border border-gray-200"
     />
     <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
       <Typography variant="body1">
@@ -471,6 +458,10 @@ function Trip() {
       <Typography variant="body1">
         <strong>Reduction in downtime by 10 percent.</strong>
       </Typography>
+      <Typography variant="body1">
+        <strong>Resale Value of Old Vehicle</strong>
+      </Typography>
+
     </div>
     </div>
    
@@ -503,27 +494,25 @@ function Trip() {
                   </div>
 
                   <div className="p-4 space-y-2">
-                    <Typography variant="h6" className="mb-2">
-                      {trip.locationName}
+                    <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Trip ID:</strong> <span className="text-sm">{trip.tripId}</span>
+                      </Typography>
+                    <Typography variant="paragraph">
+                        <strong  className="font-semibold text-sm">Vehicle ID:</strong> <span className="text-sm">{trip.vehicleId}</span>
+                      </Typography>
+                      <Typography variant="paragraph" className="flex items-center">
+                      {/* <UserIcon className="h-5 w-5 mr-2" /> */}
+                      <strong className="font-semibold text-sm">Driver ID:</strong> <span className="text-sm">{trip.driverId}</span>
                     </Typography>
                     <Typography variant="paragraph">
-                      <strong>Date:</strong> {trip.date}
-                    </Typography>
-                    <Typography variant="paragraph" className="flex items-center">
-                      <UserIcon className="h-5 w-5 mr-2" />
-                      <strong>Driver ID:</strong> {trip.driverId}
+                      <strong  className="font-semibold text-sm">Date:</strong> <span className="text-sm">{trip.date}</span>
                     </Typography>
                     <Typography variant="paragraph">
-                      <strong>Kms Traveled:</strong> {trip.kmsTraveled}
+                      <strong  className="font-semibold text-sm">KM:</strong> <span className="text-sm">{trip.kmsTraveled}</span>
                     </Typography>
-                    <Typography variant="paragraph">
-                      <strong>Time:</strong> {trip.time}
-                    </Typography>
-                    {/* <div style={{ display: 'flex', justifyContent: 'center'}}> */}
                     <Button  className="d-flex justify-content-end" style={{ backgroundColor: '#41729F', borderColor: '#41729F' }} onClick={() => handleReportClick(trip.vehicleId)}>
                     View Report
                     </Button>
-                    {/* </div> */}
                   </div>
                 </CardBody>
               </Card>

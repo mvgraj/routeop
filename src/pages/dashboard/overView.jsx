@@ -21,7 +21,7 @@ export function OverView() {
             <Card className="p-4 " style={{ height : '500px'}}>  
               <div className='flex flex-row justify-between'>
                 <Typography variant="h6">Cost of Ownership</Typography>
-                <Typography variant="h6" className="text-blue-600">All Items</Typography>
+                <Typography variant="h6" className="text-blue-600 hover:underline cursor-pointer">All Items</Typography>
               </div>
               <div className='mt-4 ms-3 p-3 border rounded flex justify-between'>
                 <div className='ms-3'>
@@ -32,6 +32,9 @@ export function OverView() {
                   <Typography style={{ fontWeight: 500}}>Cost Per Meter</Typography>
                   <Typography variant="h5">$0.90 <span className='text-'>/ml</span></Typography>
                 </div>
+              </div>
+              <div>
+                <Project-cost/>
               </div>
             </Card>
             <Card className="p-4 mt-4" style={{ height : '400px'}}>
@@ -63,33 +66,34 @@ export function OverView() {
               <div className='flex justify-between'>
                 <Typography variant="h6">Open Issues</Typography>
                 <div className="flex text-blue-600">
-                  <Typography variant="h6" className="mr-4">+ Add Issue</Typography>
-                  <Typography variant="h6">View All</Typography>
+                  <Typography variant="h6" className='hover:underline cursor-pointer mr-4' >+ Add Issue</Typography>
+                  <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
                 </div>
               </div>
-              
-              <div className='mt-4 ms-3 border p-3 flex justify-between rounded-md'>
-                <div>
-                  <Typography style={{ fontWeight: 500}}>Overdue</Typography>
-                  <Typography style = {{ fontWeight: 300}}>0</Typography>
+              <div className='overflow-y-scroll h-[400px]'>
+              <div className='p-3'>
+                  <p style={{ fontWeight: 500}}><span className=' text-blue-600'>#1</span> - Flat tyre</p>
+                  <p className='text-gray-600'><span className='font-semibold'>Reported</span> 32 minutes ago by <span className='font-semibold'>Bri P,</span> Nail in the back left tyre. Slow leak</p>
+    
                 </div>
-                <div>
-                  <Typography style={{ fontWeight : 500}}>Open</Typography>
-                  <Typography style = {{ fontWeight: 300}}>1</Typography>
+                <div className='p-3'>
+                  <p style={{ fontWeight: 500}}><span className=' text-blue-600'>#2</span> - Flat tyre</p>
+                  <p className='text-gray-600'><span className='font-semibold'>Reported</span> 32 minutes ago by <span className='font-semibold'>Bri P,</span> Nail in the back left tyre. Slow leak</p>
+    
                 </div>
-              </div>
-              <div className='mt-5 p-3'>
-                  <p style={{ fontWeight: 500}}><span className=' text-blue-600'>#20</span> - Flat tire</p>
-                  <p className='text-gray-600'>Reported 32 minutes ag0 by <span>Bri P</span></p>
-                  <p className='text-gray-600'>Nail in the back left tire. Slow leak</p>
+                <div className='p-3'>
+                  <p style={{ fontWeight: 500}}><span className=' text-blue-600'>#3</span> - Flat tyre</p>
+                  <p className='text-gray-600'><span className='font-semibold'>Reported</span> 32 minutes ago by <span className='font-semibold'>Bri P,</span> Nail in the back left tyre. Slow leak</p>
+    
+                </div>
                 </div>
             </Card>
             <Card className="p-4 h-40 mt-4">
               <div className="flex justify-between">
               <Typography variant="h6">Service Reminders</Typography>
               <div className="flex gap-2 text-blue-600">
-              <Typography variant="h6">+ Add Service Reminder</Typography>
-              <Typography variant="h6">View All</Typography>
+              <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Service Reminder</Typography>
+              <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
               </div>
               </div>
               <div className='flex mt-8 justify-center'>
@@ -99,36 +103,23 @@ export function OverView() {
               </div>
             </Card>
             <Card className="p-4 h-60 mt-4">
-              
-              <div className="flex justify-between">
-                <Typography variant="h6">Revewal Reminders</Typography>
-                  <div className="flex gap-2">
-                    <Typography variant="h6">+ Add Renewal Reminder</Typography>
-                    <Typography variant="h6">View All</Typography>
-                  </div>
-              </div>
-
-              <div className="mt-4 ms-3 p-3 border rounded-md flex justify-between">
-                <div>
-                  <Typography style={{ fontWeight : "400"}}>Overdue</Typography>
-                  <Typography style={{ fontWeight : "400"}}>1</Typography>
-                </div>
-                <div>
-                  <Typography style={{ fontWeight : "400"}}>Due Soon</Typography>
-                  <Typography style={{ fontWeight : "400"}}>0</Typography>
-                </div>
-              </div>
-              <div className='mt-5 p-3'>
-                <p className='text-gray-600'>Emission test</p>
-                <p className='text-red-600'>Overdue: 3 weeks age</p>
+            <div className="flex justify-center items-center h-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.9051038798!2d78.243236602612!3d17.412608636450027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1721726269423!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
               </div>
             </Card>
-            <Card className="p-4 h-40 mt-4">
+            <Card className="p-4 h-[197px] mt-4">
               <div className="flex justify-between">
                 <Typography variant="h6">Incomplete Work Orders</Typography>
-                  <div className="flex gap-2">
-                    <Typography variant="h6">+ Add Word Order</Typography>
-                    <Typography variant="h6">View All</Typography>
+                  <div className="flex gap-2  text-blue-600">
+                    <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Word Order</Typography>
+                    <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
                   </div>
               </div>
               <div className='flex mt-8 justify-center'>
@@ -140,6 +131,88 @@ export function OverView() {
             </Card>
            </div>
           </div>
+          <Card className="mt-4">
+            <CardBody className="flex items-start flex-col space-x-6 p-6 shadow-lg rounded-lg bg-white w-full ">
+              <Typography variant="h5" className="text-gray-800 font-medium mb-4">
+                What If Analysis
+              </Typography>
+              <div className="flex gap-20 items-center">
+            
+                
+
+              <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
+                <Typography variant="h4" className="text-blue-600 mb-2">
+                      Total Cost of Ownership (TCO) Comparison
+                    </Typography>
+                    <table className="min-w-full bg-white border-y">
+                      <thead className='border-y'>
+                        <tr>
+                          <th className="py-2 px-4 ">Description</th>
+                          <th className="py-2 px-4  ">EV Truck</th>
+                          <th className="py-2 px-4 ">ICE Truck</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className='border-b'>
+                          <td className=" px-4 py-2">Initial Purchase Cost</td>
+                          <td className=" px-4 py-2">$80,000</td>
+                          <td className=" px-4 py-2">$70,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">5-year Energy/Fuel Cost</td>
+                          <td className="px-4 py-2">$24,000</td>
+                          <td className="px-4 py-2">$58,335</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">5-year Maintenance Cost</td>
+                          <td className="px-4 py-2">$5,000</td>
+                          <td className="px-4 py-2">$15,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">5-year Insurance Cost</td>
+                          <td className="px-4 py-2">$10,000</td>
+                          <td className="px-4 py-2">$12,500</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">Resale Value (after 5 years)</td>
+                          <td className="px-4 py-2">$30,000</td>
+                          <td className="px-4 py-2">$20,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2 font-bold">Net TCO (5 years)</td>
+                          <td className="px-4 py-2 font-bold">$89,000</td>
+                          <td className="px-4 py-2 font-bold">$135,835</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+                  <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
+                <Typography variant="body1">
+                  <strong>Reduced emissions by 60 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduced fuel cost by 20 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduced maintenance cost by 30 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduction in downtime by 10 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Resale Value of Old Vehicle</strong>
+                </Typography>
+
+              </div>
+              <img
+                src="/img/truck4.webp"
+                alt="Analysis"
+                className="h-[250px] w-100 object-cover rounded-lg border border-gray-200"
+              />
+              </div>
+            
+            </CardBody>
+          </Card>
         </div>
     </div>
   )

@@ -597,7 +597,7 @@ function Analytics() {
             <thead className="text-left font-semibold text-gray-800 text-sm">
               <tr className="border-y">
                 <th className="px-6 py-4">Vehicle Id</th>
-                <th className="px-4 py-3">Recent Trips</th>
+                <th className="px-4 py-3">Total Trips</th>
                 <th className="px-6 py-3">Last Maintenance</th>
                 <th className="px-6 py-3">Emission</th>
                 <th className="px-6 py-3">Mileage</th>

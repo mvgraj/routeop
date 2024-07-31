@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Typography, Card, CardBody, Button, Input } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import LorryImage from "./img/lorry.jpg";
+import { CameraIcon } from '@heroicons/react/24/outline';
 
 const VehicleData = [
   {
@@ -14,6 +15,7 @@ const VehicleData = [
     fuel: "Diesel",
     lastMaintenanceDate: "2024-07-01",
     RUL: "5000 km",
+    location:"vizag"
   },
   {
     id: 2,
@@ -25,6 +27,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 3,
@@ -36,6 +39,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 4,
@@ -47,6 +51,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 5,
@@ -58,6 +63,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 6,
@@ -69,6 +75,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 7,
@@ -80,6 +87,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 8,
@@ -91,6 +99,7 @@ const VehicleData = [
     fuel: "Diesel",
     lastMaintenanceDate: "2024-07-10",
     RUL: "7000 km",
+    location:"vizag"
   },
   {
     id: 9,
@@ -102,6 +111,7 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
   {
     id: 10,
@@ -113,17 +123,58 @@ const VehicleData = [
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
+    location:"vizag"
   },
 ];
 
 function Fleet() {
   const [showAddVehicle, setShowAddVehicle] = useState(false);
   const [vehicleData, setVehicleData] = useState([
-    // ... (same as your original data)
+    {
+      model: "",
+      vehicleNo: "",
+      chassisNo: "",
+      manufacturer: "",
+      odometer: "",
+      location: "",
+      capacity: "",
+      fuel: "",
+      lastMaintenanceDate: "",
+      RUL: "",
+    },
   ]);
   const [filter, setFilter] = useState("All");
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+
+  const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState('');
+
+  const handleFileSelect = (file) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+    setImageName(file.name); // Set the file name
+    reader.readAsDataURL(file);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      handleFileSelect(file);
+    }
+  };
+
+  const handleChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith('image/')) {
+      handleFileSelect(file);
+    }
+  };
+
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -233,21 +284,129 @@ function Fleet() {
             ref={fileInputRef}
           />
           {vehicleData.map((vehicle, index) => (
-            <div
-              key={index}
-              className="mb-6 p-6 bg-white border border-gray-300 rounded shadow-md"
-            >
-              <div className="mb-4">
-                <Input
-                  type="text"
-                  label="Vehicle Model"
-                  value={vehicle.model}
-                  onChange={(e) => handleInputChange(e, index, "model")}
-                  fullWidth
+             <div
+             key={index}
+             className="mb-6 p-6 bg-white border border-gray-300 rounded shadow-md grid grid-cols-1 xl:grid-cols-2"
+           >
+            <div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Vehicle Model"
+                 value={vehicle.model}
+                 onChange={(e) => handleInputChange(e, index, "model")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Vehicle No"
+                 value={vehicle.vehicleNo}
+                 onChange={(e) => handleInputChange(e, index, "vehicleNo")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Chassis No"
+                 value={vehicle.chassisNo}
+                 onChange={(e) => handleInputChange(e, index, "chassisNo")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Manufacturer"
+                 value={vehicle.manufacturer}
+                 onChange={(e) => handleInputChange(e, index, "manufacturer")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="number"
+                 label="Odometer"
+                 value={vehicle.odometer}
+                 onChange={(e) => handleInputChange(e, index, "odometer")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Location"
+                 value={vehicle.location}
+                 onChange={(e) => handleInputChange(e, index, "location")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Capacity"
+                 value={vehicle.capacity}
+                 onChange={(e) => handleInputChange(e, index, "capacity")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="text"
+                 label="Fuel"
+                 value={vehicle.fuel}
+                 onChange={(e) => handleInputChange (e, index, "fuel")}
+                 fullWidth
+               />
+             </div>
+             <div className="mb-4">
+               <Input
+                 type="date"
+                 label="Last Maintenance Date"
+                 value={vehicle.lastMaintenanceDate}
+                 onChange={(e) => handleInputChange(e, index, "lastMaintenanceDate")}
+                 fullWidth
+               />
+             </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center mt-4 mb-4 ml-10" style={{ width: '100%' }}>
+              <div
+                className="h-60 border-2 border-dashed border-gray-300 rounded-lg p-4 flex items-center justify-center cursor-pointer"
+                onDrop={handleDrop}
+                onDragOver={(e) => e.preventDefault()}
+                onClick={() => document.getElementById('fileInput').click()}
+              >
+                {image ? (
+                  <img src={image} alt="Preview" className="object-cover w-[400px] h-full rounded-lg" />
+                ) : (
+                  <div className="text-center">
+                    <CameraIcon className="w-12 h-12 text-gray-400 mx-auto" />
+                    <p className="text-gray-500 mt-2">Drag & Drop your image here, or click to select one</p>
+                  </div>
+                )}
+                <input
+                  type="file"
+                  id="fileInput"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleChange}
                 />
               </div>
-              {/* Other input fields remain the same */}
+              <div className="mt-2 flex gap-2">
+                <div>
+                <span className="font-semibold">Vehicle Image:  </span>
+                </div>
+                {imageName && (
+                  <p className="text-gray-700">{imageName}</p> // Display the image name
+                )}
+              </div>
             </div>
+
+           </div>
+        
           ))}
           <Button
             onClick={handleSaveVehicles}
@@ -332,16 +491,19 @@ function Fleet() {
                   {vehicle.status}
                 </div>
                 <Typography variant="body2" className="text-sm">
-                  <strong>Vehicle No:</strong> {vehicle.vehicleNo}
+                  <strong className="font-semibold">Vehicle No:</strong> {vehicle.vehicleNo}
                 </Typography>
                 <Typography variant="body2" className="text-sm">
-                  <strong>Chassis No:</strong> {vehicle.chassisNo}
+                  <strong className="font-semibold">Chassis No:</strong> {vehicle.chassisNo}
                 </Typography>
                 <Typography variant="body2" className="text-sm">
-                  <strong>Capacity:</strong> {vehicle.capacity}
+                  <strong className="font-semibold">Capacity:</strong> {vehicle.capacity}
                 </Typography>
                 <Typography variant="body2" className="text-sm">
-                  <strong>Fuel:</strong> {vehicle.fuel}
+                  <strong className="font-semibold">Fuel:</strong> {vehicle.fuel}
+                </Typography>
+                <Typography variant="body2" className="text-sm">
+                  <strong className="font-semibold">Location:</strong> {vehicle.location}
                 </Typography>
               </div>
             </CardBody>

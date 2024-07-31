@@ -99,7 +99,7 @@ function Drivers() {
                 <div className="flex items-center">
                   <UserIcon className="h-5 w-5 mr-2" />
                   <Typography variant="body2" className="w-full flex items-center justify-between">
-                    <span className="font-medium">Name: {driver.name}</span>
+                    <strong  className="font-semibold">Name:</strong><span className="text-sm">{driver.name}</span>
                     <div className="flex items-center ml-2">
                       <Rating
                         count={5}
@@ -110,27 +110,27 @@ function Drivers() {
                         className="mr-2"
                       />
                       <span className="flex  ml-3">{driver.rating}</span>
+                      
                     </div>
                   </Typography>
                 </div>
                 <div className="flex items-center">
                   <TruckIcon className="h-5 w-5 mr-2" />
                   <Typography variant="body2" className="w-full">
-                    <span className="font-medium">Trips: {driver.trips}</span>
+                    <strong  className="font-semibold">Trips:</strong> <span className="text-sm">{driver.trips}</span>
                   </Typography>
                 </div>
                 <div className="flex items-center">
                   <GlobeAltIcon className="h-5 w-5 mr-2" />
                   <Typography variant="body2" className="w-full">
-                    <span className="font-medium">
-                      Emissions Saved: {driver.emissionsSaved} g/liter
-                    </span>
+
+                    <strong  className="font-semibold">Emissions Saved:</strong> <span className="text-sm">{driver.emissionsSaved}  g/liter</span>
                   </Typography>
                 </div>
                 <div className="flex items-center">
                   <BriefcaseIcon className="h-5 w-5 mr-2" />
                   <Typography variant="body2" className="w-full">
-                    <span className="font-medium">Experience: {driver.experience}</span>
+                    <strong  className="font-semibold">Experience:</strong> <span className="text-sm">{driver.experience}</span>
                   </Typography>
                 </div>
               </div>
