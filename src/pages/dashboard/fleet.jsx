@@ -1,7 +1,12 @@
 import React, { useState, useRef } from "react";
 import { Typography, Card, CardBody, Button, Input } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import LorryImage from "./img/lorry.jpg";
+import LorryImage from "./img/lorry1.png";
+import lorry2 from "./img/lorry2.png"
+import lorry3 from "./img/lorry3.png"
+import lorry4 from "./img/lorry4.jpg"
+import lorry5 from "./img/lorry5.png"
+
 import { CameraIcon } from '@heroicons/react/24/outline';
 
 const VehicleData = [
@@ -19,7 +24,7 @@ const VehicleData = [
   },
   {
     id: 2,
-    image: LorryImage,
+    image: lorry2,
     status: "Maintenance",
     vehicleNo: "Vehicle 2",
     chassisNo: "67890",
@@ -31,7 +36,7 @@ const VehicleData = [
   },
   {
     id: 3,
-    image: LorryImage,
+    image: lorry3,
     status: "Available",
     vehicleNo: "Vehicle 3",
     chassisNo: "67890",
@@ -43,7 +48,7 @@ const VehicleData = [
   },
   {
     id: 4,
-    image: LorryImage,
+    image: lorry4,
     status: "Active",
     vehicleNo: "Vehicle 4",
     chassisNo: "67890",
@@ -55,7 +60,7 @@ const VehicleData = [
   },
   {
     id: 5,
-    image: LorryImage,
+    image: lorry5,
     status: "Maintenance",
     vehicleNo: "Vehicle 5",
     chassisNo: "67890",
@@ -67,7 +72,7 @@ const VehicleData = [
   },
   {
     id: 6,
-    image: LorryImage,
+    image: lorry3,
     status: "Active",
     vehicleNo: "Vehicle 6",
     chassisNo: "67890",
@@ -79,7 +84,7 @@ const VehicleData = [
   },
   {
     id: 7,
-    image: LorryImage,
+    image: lorry5,
     status: "Maintenance",
     vehicleNo: "Vehicle 7",
     chassisNo: "67890",
@@ -91,7 +96,7 @@ const VehicleData = [
   },
   {
     id: 8,
-    image: LorryImage,
+    image: lorry2,
     status: "Available",
     vehicleNo: "Vehicle 8",
     chassisNo: "11223",
@@ -103,7 +108,7 @@ const VehicleData = [
   },
   {
     id: 9,
-    image: LorryImage,
+    image: lorry4,
     status: "Active",
     vehicleNo: "Vehicle 9",
     chassisNo: "67890",
@@ -404,17 +409,20 @@ function Fleet() {
                 )}
               </div>
             </div>
+            <div>
+            <Button
+            onClick={handleSaveVehicles}
+            style={{ backgroundColor: "#41729F", color: "white" }}
+            className="mt-9 "
+          >
+            Save Vehicles
+          </Button>
+              </div>
 
            </div>
         
           ))}
-          <Button
-            onClick={handleSaveVehicles}
-            style={{ backgroundColor: "#41729F", color: "white" }}
-            className="mt-4 ml-4"
-          >
-            Save Vehicles
-          </Button>
+          
         </div>
       </div>
     );

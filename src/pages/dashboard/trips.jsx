@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Card, CardBody, Button } from "@material-tailwind/react";
 import { TruckIcon, UserIcon, ShieldCheckIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
+import LorryImage from './img/lorry.jpg'
 
 // Dummy data for trips
 const tripDetails = [
@@ -300,14 +301,14 @@ function Trip() {
             {/* Vehicle Details Card */}
             <div className="lg:w-1/2 flex flex-col">
               <Card className="w-full">
-              <CardBody className="overflow-scroll h-[704px]">
+              <CardBody className=" h-[520px]">
                   <Typography variant="h5" className="mb-2 flex items-center">
                     <TruckIcon className="h-6 w-6 mr-2" />
                     Vehicle Details
                   </Typography>
                   <div className="space-y-4">
-                    <div className="space-y-2">
-
+                    <div className="space-y-2 grid grid-cols-1 xl:grid-cols-2 items-center">
+                      <div className="space-y-2">
                       <Typography variant="paragraph">
                         <strong className="font-semibold text-sm">Vehicle ID:</strong> <span className="text-sm">{selectedTrip.vehicleId}</span> 
                       </Typography>
@@ -326,29 +327,14 @@ function Trip() {
                       <Typography variant="paragraph">
                         <strong className="font-semibold text-sm">Location Name:</strong> <span className="text-sm">{selectedTrip.locationName}</span>
                       </Typography>
+                      </div>
+                      <div>
+                        <img src={LorryImage} alt="image" className="rounded-xl shadow-lg w-[250px] ml-6"/>
+                      </div>
                     </div>
                     <hr className="my-4 border-gray-300" />
-                    <div className="space-y-2">
-                      <Typography variant="h6" className="text-lg font-semibold">
-                        Total Cost
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong className="font-semibold text-sm">Fuel Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.fuel}</span>
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong className="font-semibold text-sm">Maintenance Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.maintenance}</span>
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong className="font-semibold text-sm">Driver Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.drivercost}</span>
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong className="font-semibold text-sm">Toll :</strong>  <span className="text-sm">{selectedTrip.operatingCost.toll}</span>
-                      </Typography>
-                      <Typography variant="paragraph">
-                        <strong className="font-semibold text-sm">Total Estimation:</strong> <span className="text-sm"> {selectedTrip.operatingCost.total}</span>
-                      </Typography>
-                    </div>
-                    <hr className="my-4 border-gray-300" />
+                    <div className="grid grid-cols-1 xl:grid-cols-2">
+                    
                     <div className="space-y-2">
                       <Typography variant="h6" className="text-lg font-semibold">
                         Driver Behavior
@@ -369,14 +355,32 @@ function Trip() {
                         <strong className="font-semibold text-sm">Idling:</strong>  <span className="text-sm">{selectedTrip.driverBehavior.idling}</span>
                       </Typography>
                     </div>
+                    <div className="space-y-2">
+                      <Typography variant="h6" className="text-lg font-semibold">
+                        Total Cost
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Fuel Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.fuel}</span>
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Maintenance Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.maintenance}</span>
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Driver Cost:</strong>  <span className="text-sm">{selectedTrip.operatingCost.drivercost}</span>
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Toll :</strong>  <span className="text-sm">{selectedTrip.operatingCost.toll}</span>
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Total Estimation:</strong> <span className="text-sm"> {selectedTrip.operatingCost.total}</span>
+                      </Typography>
+                    </div>
+                    </div>
+                    
                   </div>
                 </CardBody>
               </Card>
-            </div>
-
-            {/* Freight and Log Cards */}
-            <div className="lg:w-1/2 flex flex-col gap-6 ">
-              <Card className="w-full">
+              <Card className="w-full mt-3">
                 <CardBody>
                   <Typography variant="h6" className="mb-2 flex items-center">
                     <ShieldCheckIcon className="h-6 w-6 mr-2" />
@@ -407,70 +411,69 @@ function Trip() {
                   )}
                 </CardBody>
               </Card>
+            </div>
 
+            {/* Freight and Log Cards */}
+            <div className="lg:w-1/2 flex flex-col gap-6 ">
+              <Card className="w-full ">
+              <CardBody className="overflow-y-scroll h-[458px]">
+                <Typography variant="h5" className="mb-2 flex items-center">
+                  <WrenchScrewdriverIcon className="h-6 w-6 mr-2" />
+                  Log
+                </Typography>
+                {selectedTrip.log.length > 0 ? (
+                  selectedTrip.log.map(log => (
+                    <div key={log.id} className="mb-4 text-gray-700">
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm ">Log {log.id}:</strong> <span className="text-sm">{log.issue}</span>
+                      </Typography>
+                      <Typography variant="paragraph">
+                        <strong className="font-semibold text-sm">Description:</strong> <span className="text-sm">{log.description}</span>
+                      </Typography>
+                    </div>
+                  ))
+                ) : (
+                  <Typography variant="paragraph">No log details available.</Typography>
+                )}
+              </CardBody>
+            </Card>
+            <Card>
+                <CardBody className="flex items-start flex-col space-x-6 p-6 rounded-lg bg-white w-full ">
+                  <Typography variant="h5" className="text-gray-800 font-medium mb-3">
+                    What If Analysis
+                  </Typography>
+                  <div className="flex gap-6">
+                  <img
+                    src="/img/truck4.webp"
+                    alt="Analysis"
+                    className="h-[170px] w-100 object-cover rounded-lg border border-gray-200"
+                  />
+                  <div className="flex flex-col space-y-3 text-gray-700 w-full max-w-lg">
+                    <Typography variant="body1">
+                      <strong className="text-sm">Reduced emissions by 60 percent.</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                      <strong className="text-sm">Reduced fuel cost by 20 percent.</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                      <strong className="text-sm">Reduced maintenance cost by 30 percent.</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                      <strong className="text-sm">Reduction in downtime by 10 percent.</strong>
+                    </Typography>
+                    <Typography variant="body1">
+                      <strong className="text-sm">Resale Value of Old Vehicle</strong>
+                    </Typography>
 
-  <Card className="w-full ">
-  <CardBody className="overflow-scroll h-[458px]">
-    <Typography variant="h5" className="mb-2 flex items-center">
-      <WrenchScrewdriverIcon className="h-6 w-6 mr-2" />
-      Log
-    </Typography>
-    {selectedTrip.log.length > 0 ? (
-      selectedTrip.log.map(log => (
-        <div key={log.id} className="mb-4 text-gray-700">
-          <Typography variant="paragraph">
-            <strong className="font-semibold ">Log {log.id}:</strong> {log.issue}
-          </Typography>
-          <Typography variant="paragraph">
-            <strong className="font-semibold text-sm">Description:</strong> {log.description}
-          </Typography>
+                  </div>
+                  </div>
+                
+                </CardBody>
+              </Card>
+
+          </div>
         </div>
-      ))
-    ) : (
-      <Typography variant="paragraph">No log details available.</Typography>
-    )}
-  </CardBody>
-</Card>
-
-  </div>
-</div>
-  <Card className="mt-4">
-  <CardBody className="flex items-start flex-col space-x-6 p-6 shadow-lg rounded-lg bg-white w-full ">
-    <Typography variant="h5" className="text-gray-800 font-medium mb-6">
-      What If Analysis
-    </Typography>
-    <div className="flex gap-6">
-    <img
-      src="/img/truck4.webp"
-      alt="Analysis"
-      className="h-[200px] w-100 object-cover rounded-lg border border-gray-200"
-    />
-    <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
-      <Typography variant="body1">
-        <strong>Reduced emissions by 60 percent.</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Reduced fuel cost by 20 percent.</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Reduced maintenance cost by 30 percent.</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Reduction in downtime by 10 percent.</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Resale Value of Old Vehicle</strong>
-      </Typography>
-
-    </div>
-    </div>
-   
-  </CardBody>
-</Card>
-
         </div>
-
-        
       ) : (
 
         <div>

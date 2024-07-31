@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import {
   Typography,
   Card,
@@ -30,7 +30,81 @@ const recentCommentsData = [
   { id: 3, name: "Alice Johnson", profilePic: AsdImage, comment: "Looking forward to the next release.", timestamp: "3 days ago" },
 ];
 
+
+
+
 export function Home() {
+
+  const [filter, setFilter] = useState('');
+
+  const workOrders = [
+    {
+      id: 'WO12345',
+      vehicleName: 'Truck A',
+      type: 'Wood',
+      size: '5T',
+      fromLocation: 'Bangalore',
+      toLocation: 'Vizag',
+      deliveryDate: '05/06/2024',
+    },
+    {
+      id: 'WO12346',
+      vehicleName: 'Truck B',
+      type: 'Sand',
+      size: '5T',
+      fromLocation: 'Vizag',
+      toLocation: 'Bangalore',
+      deliveryDate: '20/06/2024',
+    },
+    {
+      id: 'WO12345',
+      vehicleName: 'Truck A',
+      type: 'Wood',
+      size: '5T',
+      fromLocation: 'Bangalore',
+      toLocation: 'Vizag',
+      deliveryDate: '05/06/2024',
+    },
+    {
+      id: 'WO12346',
+      vehicleName: 'Truck B',
+      type: 'Sand',
+      size: '5T',
+      fromLocation: 'Vizag',
+      toLocation: 'Bangalore',
+      deliveryDate: '20/06/2024',
+    },
+    {
+      id: 'WO12345',
+      vehicleName: 'Truck A',
+      type: 'Wood',
+      size: '5T',
+      fromLocation: 'Bangalore',
+      toLocation: 'Vizag',
+      deliveryDate: '05/06/2024',
+    },
+    {
+      id: 'WO12346',
+      vehicleName: 'Truck B',
+      type: 'Sand',
+      size: '5T',
+      fromLocation: 'Vizag',
+      toLocation: 'Bangalore',
+      deliveryDate: '20/06/2024',
+    },
+  ];
+
+  const filteredWorkOrders = workOrders.filter((order) =>
+    Object.values(order).some((value) =>
+      value.toLowerCase().includes(filter)
+    )
+  );
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value.toLowerCase());
+  };
+
+
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
@@ -89,120 +163,90 @@ export function Home() {
           }
         />
       </div>
-      {/* <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
-          <StatisticsChart
-            key={props.title}
-            {...props}
-            footer={
-              <Typography
-                variant="small"
-                className="flex items-center font-normal text-blue-gray-600"
-              >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-blue-gray-400" />
-                &nbsp;{props.footer}
-              </Typography>
-            }
-          />
-        ))}
-      </div> */}
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-col-2 xl:grid-cols-3">
         <ProjectStastics_cost/>
         <ProjectStastics_service/>
         <Project_cost/>
       </div>
 
-      <Card className="mt-3 p-3 mb-5">
-          <Typography variant="h6" color="blue-gray" className="mb-3">
-            Recent Work Orders
-          </Typography>
-          <div className='flex flex-row gap-3 mb-4'>
-            <input 
-              type='text'
-              placeholder='Enter work ID'
-              className='border-none ring-gray-300 ring-2 rounded-2xl px-3 py-1 pr-5 pl-5 focus:ring-gray-500'
-            />
-          </div>
-          <div className='mt-4'>
-            <table className='w-full text-sm  overflow-scroll' >
-              <thead className='border-y text-left'>
-                <tr className='px-3 py-5'>
-                  <th className='px-1 py-4'>Work Order Id</th>
-                  <th className='px-2 py-4'>Vehicle Name</th>
-                  <th className='px-2 py-4'>Type</th>
-                  <th className='px-2 py-4'>Size</th>
-                  <th className='px-2 py-4'>From Location</th>
-                  <th className='px-2 py-4'>To Location</th>
-                  <th className='px-2 py-4'>Delivery Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className='border-b'>
-                  <td className='px-2 py-4'>WO12345</td> 
-                  <td className='px-6 py-4'>Truck A</td> 
-                  <td className='px-2 py-4'>Wood</td>
-                  <td className='px-2 py-4'>5T</td>
-                  <td className='px-2 py-4'>Bangalore</td>
-                  <td className='px-2 py-4'>Vizag</td>
-                  <td className='px-2 py-4'><span className="badge badge-secondary">05/06/2024</span></td>
-                </tr>
-                <tr className='border-b'>
-                  <td className='px-2 py-4'>WO12346</td> 
-                  <td className='px-6 py-4'>Truck B</td>
-                  <td className='px-2 py-4'>Sand</td>
-                  <td className='px-2 py-4'>5T</td>
-                  <td className='px-2 py-4'>Vizag</td>
-                  <td className='px-2 py-4'>Bangalore</td>
-                  <td className='px-2 py-4'><span className="badge badge-secondary">20/06/2024</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </Card>
+      <Card className="mt-3 p-3 mb-5  max-h-[300px]">
+        <div className='flex justify-between items-center'>
+      <Typography variant="h6" color="blue-gray" className="mb-3">
+        Recent Work Orders
+      </Typography>
+      <div className='flex flex-row gap-3 mb-2'>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={filter}
+          onChange={handleFilterChange}
+          className="p-2 border-2 rounded-xl"
+        />
+      </div>
+      </div>
+      <div className='mt-4 overflow-y-scroll'>
+        <table className='w-full text-sm'>
+          <thead className='border-y text-left'>
+            <tr className='px-3 py-5'>
+              <th className='px-1 py-4'>Work Order Id</th>
+              <th className='px-2 py-4'>Vehicle Name</th>
+              <th className='px-2 py-4'>Type</th>
+              <th className='px-2 py-4'>Size</th>
+              <th className='px-2 py-4'>From Location</th>
+              <th className='px-2 py-4'>To Location</th>
+              <th className='px-2 py-4'>Delivery Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredWorkOrders.map((order) => (
+              <tr key={order.id} className='border-b'>
+                <td className='px-2 py-4'>{order.id}</td>
+                <td className='px-6 py-4'>{order.vehicleName}</td>
+                <td className='px-2 py-4'>{order.type}</td>
+                <td className='px-2 py-4'>{order.size}</td>
+                <td className='px-2 py-4'>{order.fromLocation}</td>
+                <td className='px-2 py-4'>{order.toLocation}</td>
+                <td className='px-2 py-4'><span className="badge badge-secondary">{order.deliveryDate}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Card>
       
-      <div className="mb-4 grid grid-cols-1 gap-6">
+      <div className="mb-3 grid grid-cols-1 gap-6">
       <Card className="border border-blue-gray-100 shadow-sm w-full">
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
-            className="m-0 p-6"
+            className="m-0 p-4 "
           >
-            <Typography variant="h6" color="blue-gray" className="mb-2">
+            <Typography variant="h6" color="blue-gray" className="">
               Logs
             </Typography>
-            {/* <Typography
-              variant="small"
-              className="flex items-center gap-1 font-normal text-blue-gray-600"
-            >
-              <ArrowUpIcon
-                strokeWidth={3}
-                className="h-3.5 w-3.5 text-green-500"
-              />
-              <strong>24%</strong> this month
-            </Typography> */}
           </CardHeader>
           <CardBody className="pt-0">
             {recentCommentsData.map(({ id, name, profilePic, comment, timestamp }) => (
               <div key={id} className="flex items-start gap-4 py-3">
-                <Avatar src={profilePic} alt={name} className="w-12 h-12" />
+                <Avatar src={profilePic} alt={name} className="w-10 h-10 mt-1" />
                 <div className="flex flex-col">
                   <Typography
                     variant="small"
                     color="blue-gray"
-                    className="block font-medium"
+                    className="block font-semibold"
                   >
                     {name}
                   </Typography>
                   <Typography
                     variant="small"
-                    className="text-xs font-medium text-blue-gray-500"
+                    className="text-xs font-medium text-gray-600"
                   >
                     {comment}
                   </Typography>
                   <Typography
                     variant="small"
-                    className="text-xs text-blue-gray-400"
+                    className="text-xs text-gray-600"
                   >
                     {timestamp}
                   </Typography>

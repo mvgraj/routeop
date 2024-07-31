@@ -28,11 +28,36 @@ function Assign() {
       driverID: "", // Added driverID field
     },
   ]);
+
   const [view, setView] = useState("form"); // State to switch between views
   const fileInputRef = useRef(null);
 
   const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState('');
+
+  const [text1,setText1] =useState('Select');
+  const [text2,setText2] =useState('Select');
+  const [text3,setText3] =useState('Select')
+
+  const handleclick1 = () =>{
+    setText1(prevText =>
+      prevText === 'Select'
+      ? 'Selected'
+      : 'Select'
+    );
+  };
+
+  const handleclick2 = () =>{
+    setText2(
+      prevText =>
+        prevText === 'Select'
+      ? "Selected"
+      : 'Select'
+    )
+  }
+  const handleclick3 = () =>{
+    setText3( prevText => prevText === 'Select' ? 'Selected' :'Select')
+  }
 
   const handleFileSelect = (file) => {
     const reader = new FileReader();
@@ -133,7 +158,7 @@ function Assign() {
                 />
                 <div
                   className="p-4"
-                  style={{ backgroundColor: "#00b100", color: "white" }}
+                  style={{ backgroundColor: "#006d00", color: "white", opacity:'0.7' }}
                 >
                   <Typography variant="body1" className="font-medium mb-1">
                     EcoTruck X1
@@ -151,7 +176,7 @@ function Assign() {
                 />
                 <div
                   className="p-4"
-                  style={{ backgroundColor: "#ffa500", color: "white" }}
+                  style={{ backgroundColor: "#ffbb5a", color: "white",opacity:'01' }}
                 >
                   <Typography variant="body1" className="font-medium mb-1">
                   EconomyTruck Y2
@@ -169,7 +194,7 @@ function Assign() {
                 />
                 <div
                   className="p-4"
-                  style={{ backgroundColor: "#e21d1d", color: "white" }}
+                  style={{ backgroundColor: "#b10000", color: "white" , opacity:'0.7'}}
                 >
                   <Typography variant="body1" className="font-medium mb-1">
                   SpeedTruck Z3
@@ -203,7 +228,7 @@ function Assign() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="text-sm">
+                <tr className="text-sm px-2">
                   <td className="px-3 py-3">D123456</td>
                   <td className="px-3 py-3">Roman Reigns</td>
                   <td>
@@ -217,9 +242,9 @@ function Assign() {
                       />
                       
                   </td>
-                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-3 py-3">Select</td>
+                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-1 py-3" onClick={handleclick1}>{text1}</td>
                 </tr>
-                <tr className=" text-sm">
+                <tr className=" text-sm px-2">
                   <td className="px-3 py-3">D233456</td>
                   <td className="px-3 py-3">Logan paul</td>
                   <td>
@@ -233,7 +258,7 @@ function Assign() {
                       />
                       
                   </td>
-                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-3 py-3">Select</td>
+                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-1 py-3" onClick={handleclick2}>{text2}</td>
                 </tr>
                 <tr className="text-sm">
                   <td className="px-3 py-3">D123321</td>
@@ -249,7 +274,7 @@ function Assign() {
                       />
                       
                   </td>
-                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-3 py-3">Select</td>
+                  <td className="text-blue-800 hover:font-semibold cursor-pointer underline px-1 py-3" onClick={handleclick3}>{text3}</td>
                 </tr>
               </tbody>
             </table>

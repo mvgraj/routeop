@@ -23,12 +23,12 @@ export function OverView() {
                 <Typography variant="h6">Cost of Ownership</Typography>
                 <Typography variant="h6" className="text-blue-600 hover:underline cursor-pointer">All Items</Typography>
               </div>
-              <div className='mt-4 ms-3 p-3 border rounded flex justify-between'>
-                <div className='ms-3'>
+              <div className='mt-4 ms-3 p-3 border rounded flex grid grid-cols-2'>
+                <div className='ms-3 border-r'>
                   <Typography style={{ fontWeight: 500}}>Total Costs</Typography>
                   <Typography variant="h5">$372.22</Typography>
                 </div>
-                <div>
+                <div className='ml-7'>
                   <Typography style={{ fontWeight: 500}}>Cost Per Meter</Typography>
                   <Typography variant="h5">$0.90 <span className='text-'>/ml</span></Typography>
                 </div>
@@ -131,16 +131,49 @@ export function OverView() {
             </Card>
            </div>
           </div>
-          <Card className="mt-4">
+          <Card className="mt-4 grid ">
             <CardBody className="flex items-start flex-col space-x-6 p-6 shadow-lg rounded-lg bg-white w-full ">
               <Typography variant="h5" className="text-gray-800 font-medium mb-4">
                 What If Analysis
               </Typography>
-              <div className="flex gap-20 items-center">
-            
-                
+              <div className="flex gap-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+                <div className='mt-5'>
+                  <p className='font-semibold'>Current vehicle:</p>
+              <img
+                src="/img/truck4.webp"
+                alt="Analysis"
+                className="h-[250px] w-100 object-cover rounded-lg border border-gray-200 mt-3"
+              />
+              <p className='font-semibold mt-5'>Truck Name:</p>
+              <p className='text-md font-semibold'>RUL: <span className=''>80000KM</span></p>
+              <p className='text-md font-semibold'>Resale Value:<span>30000</span></p>
+              </div>
+              <div className='items-center'>
+                  <p className='font-semibold mt-5'>Suggested vehicle: <span>EV</span></p>
+              <img
+                src="/img/lorry.jpg"
+                alt="Analysis"
+                className="h-[250px] w-100 object-cover rounded-lg border border-gray-200 mt-3"
+              />
+              <div className="flex flex-col space-y-1 text-gray-700 w-full max-w-lg mt-4">
+                <Typography variant="body1">
+                  <strong>Reduced emissions by 60 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduced fuel cost by 20 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduced maintenance cost by 30 percent.</strong>
+                </Typography>
+                <Typography variant="body1">
+                  <strong>Reduction in downtime by 10 percent.</strong>
+                </Typography>
 
-              <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
+              </div>
+              
+              </div>
+
+              <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg mt-4">
                 <Typography variant="h4" className="text-blue-600 mb-2">
                       Total Cost of Ownership (TCO) Comparison
                     </Typography>
@@ -186,29 +219,9 @@ export function OverView() {
                       </tbody>
                     </table>
               </div>
-                  <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg">
-                <Typography variant="body1">
-                  <strong>Reduced emissions by 60 percent.</strong>
-                </Typography>
-                <Typography variant="body1">
-                  <strong>Reduced fuel cost by 20 percent.</strong>
-                </Typography>
-                <Typography variant="body1">
-                  <strong>Reduced maintenance cost by 30 percent.</strong>
-                </Typography>
-                <Typography variant="body1">
-                  <strong>Reduction in downtime by 10 percent.</strong>
-                </Typography>
-                <Typography variant="body1">
-                  <strong>Resale Value of Old Vehicle</strong>
-                </Typography>
 
-              </div>
-              <img
-                src="/img/truck4.webp"
-                alt="Analysis"
-                className="h-[250px] w-100 object-cover rounded-lg border border-gray-200"
-              />
+              
+              
               </div>
             
             </CardBody>

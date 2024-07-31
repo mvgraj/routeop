@@ -103,7 +103,7 @@ function Drivers() {
                     <div className="flex items-center ml-2">
                       <Rating
                         count={5}
-                        value="3"
+                        value={driver.rating}
                         size={20}
                         edit={false}
                         activeColor="#ffd700"

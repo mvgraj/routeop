@@ -62,7 +62,7 @@ function Cost() {
   return (
     <div>
         <ProjectStastics/>
-        <div className='bg-white p-3 rounded-xl mt-3 overflow-scroll max-h-[350px]'>
+        <div className='bg-white p-3 rounded-xl mt-3 overflow-y-scroll max-h-[350px]'>
               <table className='w-full text-sm '>
                 <thead className=' text-left border-y text-gray-800'>
                   <tr className=''>

@@ -47,7 +47,7 @@ const FinancialReportCard = () => {
         horizontal: false,
         columnWidth: "60%",
         borderRadiusApplication: "end",
-        borderRadius: 8,
+        borderRadius: 4,
         
       },
     },
