@@ -151,16 +151,12 @@ function Drivers() {
           <div className="flex items-center justify-center min-h-screen p-4">
             <div className="bg-white p-6 border rounded-lg shadow-lg w-full max-w-4xl">
               <form onSubmit={handleSubmit} className="flex flex-col">
-                <div className="flex justify-between items-center mb-6">
-                  <Button
-                    onClick={handleClose}
-                    style={{ backgroundColor: '#41729F', borderColor: '#41729F' }}
-                  >
-                    Back
-                  </Button>
-                  <Typography variant="h5" className="text-center flex-grow">
+              <Typography variant="h5" className="text-center flex-grow">
                     Add New Driver
                   </Typography>
+                <div className="flex justify-between items-center mb-6 mt-5">
+                 
+                 
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -213,8 +209,13 @@ function Drivers() {
                     onChange={handleFileChange}
                   />
                 </div>
-
-                <div className="flex justify-end">
+                <div className="flex justify-between mt-7">
+                <Button
+                    onClick={handleClose}
+                    style={{ backgroundColor: '#41729F', borderColor: '#41729F' }}
+                  >
+                    Back
+                  </Button>
                   <Button type="submit" style={{ backgroundColor: '#41729F', borderColor: '#41729F' }}>
                     Save
                   </Button>
