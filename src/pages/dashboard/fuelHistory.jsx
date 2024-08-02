@@ -1,11 +1,9 @@
 import React from 'react'
 import {Card} from '@material-tailwind/react'
-import { Header } from '@/widgets/layout'
 
 export function FuelHistory() {
   return (
     <div className='mt-5'>
-        {/* <Header/> */}
         <Card className="mt-3 p-3" style={{height : '648px'}}>
             <div className='flex gap-3'>
                 <input 
@@ -13,10 +11,10 @@ export function FuelHistory() {
                 placeholder='Search'
                 className='border-none ring-gray-300 ring-2 rounded-2xl px-3 py-1 pr-5 pl-5 focus:ring-gray-500'
                 />
-                <p className='p-1 bg-gray-300 rounded-2xl px-6 hover:bg-gray-400 cursor-pointer'>Date</p>
+                {/* <p className='p-1 bg-gray-300 rounded-2xl px-6 hover:bg-gray-400 cursor-pointer'>Date</p>
                 <p className='p-1 bg-gray-300 rounded-2xl px-6 hover:bg-gray-400 cursor-pointer'>Vendor</p>
-                <p className='p-1 bg-gray-300 rounded-2xl px-6 hover:bg-gray-400 cursor-pointer'>Fuel Entry Fuel Trasaction</p>
-                <p className='p-1 text-blue-600  rounded-2xl px-6 cursor-pointer font-semibold'>More Action</p>
+                <p className='p-1 bg-gray-300 rounded-2xl px-6 hover:bg-gray-400 cursor-pointer'>Fuel Entry Fuel Trasaction</p> */}
+                {/* <p className='p-1 text-blue-600  rounded-2xl px-6 cursor-pointer font-semibold'>More Action</p> */}
             </div>
             <div className='mt-4'>
                 <table className='text-sm w-full text-left'>
@@ -51,8 +49,8 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-2 py-3'>
                                 <ul>
-                                    <li>$57.33</li>
-                                    <li>$4.24/galon</li>
+                                    <li>57.33</li>
+                                    <li>4.24/galon</li>
                                 </ul>
                             </td>
                             <td  className='px-4 py-3'>
@@ -63,7 +61,7 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-5 py-3'>
                                 <ul>
-                                    <li>$0.49</li>
+                                    <li>0.49</li>
                                     <li>/mile</li>
                                 </ul>
                             </td>
@@ -86,8 +84,8 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-2 py-3'>
                                 <ul>
-                                    <li>$57.33</li>
-                                    <li>$4.24/galon</li>
+                                    <li>57.33</li>
+                                    <li>4.24/galon</li>
                                 </ul>
                             </td>
                             <td  className='px-4 py-3'>
@@ -98,7 +96,7 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-5 py-3'>
                                 <ul>
-                                    <li>$0.49</li>
+                                    <li>0.49</li>
                                     <li>/mile</li>
                                 </ul>
                             </td>
@@ -121,8 +119,8 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-2 py-3'>
                                 <ul>
-                                    <li>$57.33</li>
-                                    <li>$4.24/galon</li>
+                                    <li>57.33</li>
+                                    <li>4.24/galon</li>
                                 </ul>
                             </td>
                             <td  className='px-4 py-3'>
@@ -133,7 +131,7 @@ export function FuelHistory() {
                             </td>
                             <td  className='px-5 py-3'>
                                 <ul>
-                                    <li>$0.49</li>
+                                    <li>0.49</li>
                                     <li>/mile</li>
                                 </ul>
                             </td>

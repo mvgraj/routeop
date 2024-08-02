@@ -10,12 +10,12 @@ import {
 import { TruckIcon, UserIcon, CalendarIcon, GlobeAltIcon , BriefcaseIcon} from "@heroicons/react/24/outline";
 import { Modal, Backdrop, Fade } from '@mui/material';
 import Rating from 'react-rating-stars-component';
+import axios from 'axios';
 
-// Images from public folder
-const driver1 = "/img/team-1.jpeg";
-const driver2 = "/img/team-2.jpeg";
-const driver3 = "/img/team-3.jpeg";
-const driver4 = "/img/team-4.jpeg";
+import driver1 from './img/driver1.png';
+import driver2 from './img/driver2.png'
+import driver3 from './img/driver3.png'
+import driver4 from './img/driver4.jpg'
 
 function Drivers() {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,8 @@ function Drivers() {
     aadharNumber: '',
     phoneNumber: '',
     photo: null,
-    drivingLicense: null
+    drivingLicense: null,
+    Experience:''
   });
 
   const handleOpen = () => setOpen(true);
@@ -42,29 +43,68 @@ function Drivers() {
     setFormData({ ...formData, [name]: files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
-    // Reset form and close the modal after submission
-    setFormData({
-      name: '',
-      dateOfBirth: '',
-      panId:'',
-      aadharNumber: '',
-      phoneNumber: '',
-      photo: null,
-      drivingLicense: null
-    });
-    handleClose();
-  };
+    
+    // Create a FormData object to hold the form data
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('date_of_birth', formData.dateOfBirth);
+    formDataToSend.append('pan_id', formData.panId);
+    formDataToSend.append('aadhar_number', formData.aadharNumber);
+    formDataToSend.append('phone_number', formData.phoneNumber);
+    if (formData.photo) {
+        formDataToSend.append('photo', formData.photo);
+    }
+    if (formData.drivingLicense) {
+        formDataToSend.append('driving_license', formData.drivingLicense);
+    }
+    formDataToSend.append('Experience', formData.Experience);
+
+    try {
+        // Send a POST request to the backend API
+        const response = await axios.post('/api/drivers', formDataToSend, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+
+        console.log(response.data);  // Handle response if needed
+        alert('Driver added successfully!');
+
+        // Reset form and close the modal after submission
+        setFormData({
+            name: '',
+            dateOfBirth: '',
+            panId:'',
+            aadharNumber: '',
+            phoneNumber: '',
+            photo: null,
+            drivingLicense: null,
+            Experience:''
+        });
+        handleClose();
+    } catch (error) {
+        console.error('Error adding driver:', error);
+        alert('Failed to add driver. Please try again.');
+    }
+};
 
   // Dummy data for drivers
   const driverProfiles = [
     { image: driver1, name: 'John Doe', driverId: 'driver1', trips: '50', emissionsSaved: '100', rating: 4.5, experience: '5 years' },
     { image: driver2, name: 'Jane Smith', driverId: 'driver2', trips: '30', emissionsSaved: '75', rating: 5, experience: '3 years' },
     { image: driver3, name: 'Mike Johnson', driverId: 'driver3', trips: '20', emissionsSaved: '50', rating: 3.2, experience: '2 years' },
-    { image: driver4, name: 'Emily Davis', driverId: 'driver4', trips: '10', emissionsSaved: '25', rating: 4.8, experience: '4 years' }
+    { image: driver4, name: 'Emily Davis', driverId: 'driver4', trips: '10', emissionsSaved: '25', rating: 4.8, experience: '4 years' },
+    { image: driver1, name: 'John Doe', driverId: 'driver1', trips: '50', emissionsSaved: '100', rating: 4.5, experience: '5 years' },
+    { image: driver2, name: 'Jane Smith', driverId: 'driver2', trips: '30', emissionsSaved: '75', rating: 5, experience: '3 years' },
+      { image: driver3, name: 'Mike Johnson', driverId: 'driver3', trips: '20', emissionsSaved: '50', rating: 3.2, experience: '2 years' },
+    { image: driver4, name: 'Emily Davis', driverId: 'driver4', trips: '10', emissionsSaved: '25', rating: 4.8, experience: '4 years' },
+    { image: driver3, name: 'Mike Johnson', driverId: 'driver3', trips: '20', emissionsSaved: '50', rating: 3.2, experience: '2 years' },
+    { image: driver4, name: 'Emily Davis', driverId: 'driver4', trips: '10', emissionsSaved: '25', rating: 4.8, experience: '4 years' },
+    { image: driver1, name: 'John Doe', driverId: 'driver1', trips: '50', emissionsSaved: '100', rating: 4.5, experience: '5 years' },
+    { image: driver2, name: 'Jane Smith', driverId: 'driver2', trips: '30', emissionsSaved: '75', rating: 5, experience: '3 years' },
+  
     // Add more dummy data as needed
   ];
 
@@ -207,6 +247,13 @@ function Drivers() {
                     type="file"
                     name="drivingLicense"
                     onChange={handleFileChange}
+                  />
+                  <Input
+                    label="Experience"
+                    name="Experience"
+                    value={formData.Experience}
+                    onChange={handleInputChange}
+                    required
                   />
                 </div>
                 <div className="flex justify-between mt-7">

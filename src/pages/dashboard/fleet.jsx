@@ -205,29 +205,12 @@ function Fleet() {
     setVehicleData(newVehicleData);
   };
 
-  const addNewVehicle = () => {
-    setVehicleData([
-      ...vehicleData,
-      {
-        model: "",
-        vehicleNo: "",
-        chassisNo: "",
-        manufacturer: "",
-        odometer: "",
-        location: "",
-        capacity: "",
-        fuel: "",
-        lastMaintenanceDate: "",
-        RUL: "",
-      },
-    ]);
-  };
-
   const triggerFileInput = () => {
     fileInputRef.current.click();
   };
 
   const navigateToAddVehicle = () => {
+    
     setShowAddVehicle(true);
   };
 
@@ -240,7 +223,7 @@ function Fleet() {
   };
 
   const navigatetoheader = () => {
-    navigate("/dashboard/header");
+    navigate("/dashboard/Vehicle_analysis");
   };
 
   const handleFilterChange = (status) => {
@@ -523,3 +506,5 @@ function Fleet() {
 }
 
 export default Fleet;
+
+

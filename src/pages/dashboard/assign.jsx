@@ -312,7 +312,7 @@ function Assign() {
             </Typography>
 
           </CardHeader>
-          <CardBody className="flex flex-col grid grid-cols-1 xl:grid-cols-2 gap-4">
+          <CardBody className="flex flex-col grid grid-cols-1 xl:grid-cols-2 gap-4 text-sm">
             <div className="grid gap-4 " style={{ width: '150%' }}>
             <div className="grid grid-cols-3 gap-4 items-center" >
               <Typography>Type</Typography>

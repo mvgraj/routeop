@@ -68,10 +68,11 @@ function Cost() {
                   <tr className=''>
                     <th className='px-2 py-4'>TripId</th>
                     <th>Date of Trip</th>
+                    <th>Distance</th>
                     <th>Speculative Cost</th>
                     <th>Actual Cost</th>
                     <th>Saved Cost</th>
-                    <th>Distance</th>
+                  
                   </tr>
                 </thead>
                 
@@ -86,6 +87,9 @@ function Cost() {
                       {fuel.date}
                     </td >
                     <td className='px-2 py-4'>
+                      {fuel.distance}
+                    </td>
+                    <td className='px-2 py-4'>
                       {fuel.speculativeCost}
                     </td>
                     <td className='px-2 py-4'>
@@ -94,9 +98,7 @@ function Cost() {
                     <td className='px-2 py-4'>
                       {fuel.savedCost}
                     </td>
-                    <td className='px-2 py-4'>
-                      {fuel.distance}
-                    </td>
+                    
                   </tr>
                   </tbody>
                     ))

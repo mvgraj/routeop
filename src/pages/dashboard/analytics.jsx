@@ -190,7 +190,7 @@ function Analytics() {
     setActiveTab(tab);
   };
   const navigatetoheader = () => {
-    navigate("/dashboard/header");
+    navigate("/dashboard/Vehicle_analysis");
   };
 
   const handleFilterChange = (option) => {
@@ -250,10 +250,10 @@ function Analytics() {
 
       {activeTab === "vehicle" && (
         <div className=" rounded-xl bg-white p-3">
-          <table className="min-w-full bg-white rounded-xl" onClick={() => navigatetoheader()}>
+          <table className="min-w-full bg-white rounded-xl" >
             <thead className="text-left font-semibold text-gray-800 text-sm">
               <tr className="border-y">
-                <th className="px-6 py-4">Vehicle Id</th>
+                <th className="px-6 py-4" >Vehicle Id</th>
                 <th className="px-4 py-3">Total Trips</th>
                 <th className="px-6 py-3">Last Maintenance</th>
                 <th className="px-6 py-3">Emission</th>
@@ -264,9 +264,9 @@ function Analytics() {
               {vehicles.map((vehicle, index) => (
                 <tr className="text-sm text-gray-800 border-b" key={index}>
                   <td className="px-6 py-3 cursor-pointer">
-                    <div className="flex items-center">
+                    <div className="flex items-center" onClick={() => navigatetoheader()}>
                       <img src={vehicle.image} alt={vehicle.name} className="h-9 w-9 rounded-full object-cover mr-4" />
-                      <td  className="text-sm text-gray-800">{vehicle.name}</td>
+                      <td  className="text-sm text-gray-800" >{vehicle.name}</td>
                     </div>
                   </td>
                   <td className="px-8 py-3 ">
@@ -375,8 +375,6 @@ function Analytics() {
                   </tbody>
                     ))
                   }
-                  
-                
               </table>
         </div>
             

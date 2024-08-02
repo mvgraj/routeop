@@ -11,3 +11,4 @@ export { default as Drivers } from './drivers';
 export { default as Trips } from './trips';
 export { default as Cost } from './cost';
 export { default as Emission } from './Emission';
+export { default as Documents } from './documents';

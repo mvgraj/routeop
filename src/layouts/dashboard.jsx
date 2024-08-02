@@ -4,12 +4,12 @@ import {
   DashboardNavbar,
   Configurator,
   Footer,
-  Header,
+  Vehicle_Analysis,
 } from "@/widgets/layout";
 import routes from "@/routes";
 import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 
-import { Cost, Emission, Fleet, FuelHistory, OverView, ServiceHistory, WorkOrders } from "@/pages/dashboard";
+import { Cost, Emission, Fleet, FuelHistory, OverView, ServiceHistory, WorkOrders, Documents} from "@/pages/dashboard";
 
 export function Dashboard() {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -39,7 +39,7 @@ export function Dashboard() {
               </Route>
             ))
           )}
-          <Route path="header/*" element={<Header />}>
+          <Route path="Vehicle_analysis/*" element={<Vehicle_Analysis />}>
             <Route index element={<Navigate to="overview" />} />
             <Route path="overview" element={<OverView />} />
             <Route path="serviceHistory" element={<ServiceHistory />} />
@@ -47,6 +47,7 @@ export function Dashboard() {
             <Route path="workOrders" element={<WorkOrders />} />
             <Route path="Emission" element={<Emission/>} />
             <Route path="cost" element={<Cost/>} />
+            <Route path="documents" element={<Documents/>} />
           </Route>
           <Route path="/fleet" element={<Fleet/>} />
         </Routes>

@@ -11,7 +11,8 @@ function Emission() {
       pm:'0.2',
       co:'2.3',
       hc:'0.05',
-      so:'0.003'
+      so:'0.003',
+      total:'2312.753'
     },
     {
       trip:'10102',
@@ -21,7 +22,8 @@ function Emission() {
       pm:'0.2',
       co:'2.3',
       hc:'0.05',
-      so:'0.003'
+      so:'0.003',
+      total:'2312.753'
     },
     {
       trip:'10103',
@@ -31,7 +33,8 @@ function Emission() {
       pm:'0.2',
       co:'2.3',
       hc:'0.05',
-      so:'0.003'
+      so:'0.003',
+      total:'2312.753'
     }
   ]
   return (
@@ -51,6 +54,7 @@ function Emission() {
                 <th className='py-3 px-2'>CO</th>
                 <th className='py-3 px-2'>HC/VOCs</th>
                 <th className='py-3 px-2'>SO2</th>
+                <th className='py-3 '>Total Emission</th>
               </tr>
             </thead>
             <tbody className=''>
@@ -97,6 +101,12 @@ function Emission() {
                     <td className='py-3 px-2'>
                     <ul className='items-center'>
                         <li>{emission.so}</li>
+                        <li className='text-xs text-gray-600'>g/liters</li>
+                      </ul>
+                    </td>
+                    <td className='py-3 px-2'>
+                    <ul className='items-center'>
+                        <li>{emission.total}</li>
                         <li className='text-xs text-gray-600'>g/liters</li>
                       </ul>
                     </td>

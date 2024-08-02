@@ -7,10 +7,10 @@ export function OverView() {
   const products = [
     {name:'Name', details:'SR5'},
     {name:'Meter', details:'95,284 mi'},
-    {name:'Status', details:'Active',history: 'history'},
-    {name:'Group', details:'Austin',history: 'history'},
+    {name:'Status', details:'Active'},
+    {name:'Manufracture', details:'Austin'},
     {name:'Operator', details:'Lex Waters'},
-    {name:'Type', details:'SUV'}
+    {name:'Type', details:'Truck'}
 
   ]
   return (
@@ -26,25 +26,66 @@ export function OverView() {
               <div className='mt-4 ms-3 p-3 border rounded flex grid grid-cols-2'>
                 <div className='ms-3 border-r'>
                   <Typography style={{ fontWeight: 500}}>Total Costs</Typography>
-                  <Typography variant="h5">$372.22</Typography>
+                  <Typography variant="h5">135,835</Typography>
                 </div>
                 <div className='ml-7'>
-                  <Typography style={{ fontWeight: 500}}>Cost Per Meter</Typography>
-                  <Typography variant="h5">$0.90 <span className='text-'>/ml</span></Typography>
+                  <Typography style={{ fontWeight: 500}}>Cost Per Year</Typography>
+                  <Typography variant="h5">0.90 <span className='text-'>/ml</span></Typography>
                 </div>
               </div>
-              <div>
-                <Project-cost/>
+              <div className='ml-7'>
+              <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg mt-4">
+  
+                    <table className="min-w-full bg-white border-b">
+                      <thead className='border-b text-left'>
+                        <tr>
+                          <th className="py-2 px-4 ">Description</th>
+ 
+                          <th className="py-2 px-4 ">Cost</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className='border-b'>
+                          <td className=" px-4 py-2">Initial Purchase Cost</td>
+
+                          <td className=" px-4 py-2">70,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">Total Energy/Fuel Cost</td>
+   
+                          <td className="px-4 py-2">58,335</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">Toatl Maintenance Cost</td>
+             
+                          <td className="px-4 py-2">15,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">Total Insurance Cost</td>
+                    
+                          <td className="px-4 py-2">12,500</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2">Resale Value</td>
+            
+                          <td className="px-4 py-2">20,000</td>
+                        </tr>
+                        <tr className='border-b'>
+                          <td className="px-4 py-2 font-bold">Total</td>
+                     
+                          <td className="px-3 py-2 font-bold">135,835</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
               </div>
             </Card>
             <Card className="p-4 mt-4" style={{ height : '400px'}}>
-              <Typography variant="h6">Details</Typography>
+              <Typography variant="h6">Vehicle Details</Typography>
               <div className='overflow-x-hidden'>
                 <table className='w-full text-sm text-left text-gray-600'>
                   <thead className='text-lg text-gray-700 mb-5 '>
-                    <tr>
-                      <th>All Fields</th>
-                    </tr>
+                   
                   </thead>
                   <tbody>
                     {products.map((product,index) =>(
@@ -58,6 +99,10 @@ export function OverView() {
                   </tbody>
                 </table>
               </div>
+              <Typography variant="h6" className='mt-4'>Documents</Typography>
+              <div>
+                    <p></p>
+              </div>
               
             </Card>
             </div>
@@ -66,8 +111,8 @@ export function OverView() {
               <div className='flex justify-between'>
                 <Typography variant="h6">Open Issues</Typography>
                 <div className="flex text-blue-600">
-                  <Typography variant="h6" className='hover:underline cursor-pointer mr-4' >+ Add Issue</Typography>
-                  <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
+                  {/* <Typography variant="h6" className='hover:underline cursor-pointer mr-4' >+ Add Issue</Typography>
+                  <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography> */}
                 </div>
               </div>
               <div className='overflow-y-scroll h-[400px]'>
@@ -92,8 +137,8 @@ export function OverView() {
               <div className="flex justify-between">
               <Typography variant="h6">Service Reminders</Typography>
               <div className="flex gap-2 text-blue-600">
-              <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Service Reminder</Typography>
-              <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
+              {/* <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Service Reminder</Typography>
+              <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography> */}
               </div>
               </div>
               <div className='flex mt-8 justify-center'>
@@ -118,8 +163,8 @@ export function OverView() {
               <div className="flex justify-between">
                 <Typography variant="h6">Incomplete Work Orders</Typography>
                   <div className="flex gap-2  text-blue-600">
-                    <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Word Order</Typography>
-                    <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography>
+                    {/* <Typography variant="h6" className='hover:underline cursor-pointer'>+ Add Word Order</Typography>
+                    <Typography variant="h6" className='hover:underline cursor-pointer'>View All</Typography> */}
                   </div>
               </div>
               <div className='flex mt-8 justify-center'>
@@ -133,23 +178,23 @@ export function OverView() {
           </div>
           <Card className="mt-4 grid ">
             <CardBody className="flex items-start flex-col space-x-6 p-6 shadow-lg rounded-lg bg-white w-full ">
-              <Typography variant="h5" className="text-gray-800 font-medium mb-4">
+              <Typography variant="h5" className="font-medium mb-4">
                 What If Analysis
               </Typography>
               <div className="flex gap-20 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-                <div className='mt-5'>
+                <div className='mt-5 '>
                   <p className='font-semibold'>Current vehicle:</p>
               <img
                 src="/img/truck4.webp"
                 alt="Analysis"
                 className="h-[250px] w-100 object-cover rounded-lg border border-gray-200 mt-3"
               />
-              <p className='font-semibold mt-5'>Truck Name:</p>
-              <p className='text-md font-semibold'>RUL: <span className=''>80000KM</span></p>
-              <p className='text-md font-semibold'>Resale Value:<span>30000</span></p>
+              <p className=' mt-5'><span className='font-semibold'>Truck Name: </span>ICE Truck</p>
+              <p className='text-md '><span className='font-semibold'>RUL: </span>80000km</p>
+              <p className='text-md '><span className='font-semibold'>Resale Value: </span>30000</p>
               </div>
               <div className='items-center'>
-                  <p className='font-semibold mt-5'>Suggested vehicle: <span>EV</span></p>
+                  <p className='font-semibold mt-5'>Suggested vehicle: <span>EV Truck</span></p>
               <img
                 src="/img/lorry.jpg"
                 alt="Analysis"
@@ -174,7 +219,7 @@ export function OverView() {
               </div>
 
               <div className="flex flex-col space-y-4 text-gray-700 w-full max-w-lg mt-4">
-                <Typography variant="h4" className="text-blue-600 mb-2">
+                <Typography variant="h6" className="text-blue-600 mt-1 mb-5">
                       Total Cost of Ownership (TCO) Comparison
                     </Typography>
                     <table className="min-w-full bg-white border-y">
@@ -188,33 +233,33 @@ export function OverView() {
                       <tbody>
                         <tr className='border-b'>
                           <td className=" px-4 py-2">Initial Purchase Cost</td>
-                          <td className=" px-4 py-2">$80,000</td>
-                          <td className=" px-4 py-2">$70,000</td>
+                          <td className=" px-4 py-2">80,000</td>
+                          <td className=" px-4 py-2">70,000</td>
                         </tr>
                         <tr className='border-b'>
                           <td className="px-4 py-2">5-year Energy/Fuel Cost</td>
-                          <td className="px-4 py-2">$24,000</td>
-                          <td className="px-4 py-2">$58,335</td>
+                          <td className="px-4 py-2">24,000</td>
+                          <td className="px-4 py-2">58,335</td>
                         </tr>
                         <tr className='border-b'>
                           <td className="px-4 py-2">5-year Maintenance Cost</td>
-                          <td className="px-4 py-2">$5,000</td>
-                          <td className="px-4 py-2">$15,000</td>
+                          <td className="px-4 py-2">5,000</td>
+                          <td className="px-4 py-2">15,000</td>
                         </tr>
                         <tr className='border-b'>
                           <td className="px-4 py-2">5-year Insurance Cost</td>
-                          <td className="px-4 py-2">$10,000</td>
-                          <td className="px-4 py-2">$12,500</td>
+                          <td className="px-4 py-2">10,000</td>
+                          <td className="px-4 py-2">12,500</td>
                         </tr>
                         <tr className='border-b'>
                           <td className="px-4 py-2">Resale Value (after 5 years)</td>
-                          <td className="px-4 py-2">$30,000</td>
-                          <td className="px-4 py-2">$20,000</td>
+                          <td className="px-4 py-2">30,000</td>
+                          <td className="px-4 py-2">20,000</td>
                         </tr>
                         <tr className='border-b'>
                           <td className="px-4 py-2 font-bold">Net TCO (5 years)</td>
-                          <td className="px-4 py-2 font-bold">$89,000</td>
-                          <td className="px-4 py-2 font-bold">$135,835</td>
+                          <td className="px-4 py-2 font-bold">89,000</td>
+                          <td className="px-4 py-2 font-bold">135,835</td>
                         </tr>
                       </tbody>
                     </table>
