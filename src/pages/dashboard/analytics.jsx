@@ -189,8 +189,8 @@ function Analytics() {
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
-  const navigatetoheader = () => {
-    navigate("/dashboard/Vehicle_analysis");
+  const navigatetoheader = (vehicle) => {
+    navigate("/dashboard/Vehicle_analysis", {state: {vehicle}});
   };
 
   const handleFilterChange = (option) => {
@@ -264,7 +264,7 @@ function Analytics() {
               {vehicles.map((vehicle, index) => (
                 <tr className="text-sm text-gray-800 border-b" key={index}>
                   <td className="px-6 py-3 cursor-pointer">
-                    <div className="flex items-center" onClick={() => navigatetoheader()}>
+                    <div className="flex items-center" onClick={() => navigatetoheader(vehicle)}>
                       <img src={vehicle.image} alt={vehicle.name} className="h-9 w-9 rounded-full object-cover mr-4" />
                       <td  className="text-sm text-gray-800" >{vehicle.name}</td>
                     </div>

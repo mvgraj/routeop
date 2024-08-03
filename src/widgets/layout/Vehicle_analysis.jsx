@@ -35,8 +35,8 @@ export function Vehicle_Analysis() {
           <img src={vehicle.image} alt='IMG' className='h-12 w-12 rounded-md mr-4' />
           <div>
             <div className='flex gap-3'>
-              <h2 className='text-lg font-semibold mb-1'>{vehicle.vehicleNo}</h2>
-              <p className={`p-0.5 font-semibold ${vehicle.status === 'Active' ? 'text-green-600' : vehicle.status === 'Maintenance' ? 'text-orange-600' : vehicle.status === 'Available' ? 'text-yellow-600' : ''}`}> · {vehicle.status}</p>
+              <h2 className='text-lg font-semibold mb-1'>{vehicle.vehicleNo || 'V001'}</h2>
+              <p className={`p-0.5 font-semibold ${vehicle.status === 'Active' ? 'text-green-600' : vehicle.status === 'Maintenance' ? 'text-orange-600' : vehicle.status === 'Available' ? 'text-yellow-600' : ''}`}> · {vehicle.status || 'Active'}</p>
             </div>
             <p className='text-gray-600 mb-1 text-sm'>SUV · 2012 Nissan Pathfinder · 5N1AR1NB7CC614990</p>
             <div className='flex text-sm'>

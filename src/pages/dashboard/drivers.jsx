@@ -139,6 +139,7 @@ function Drivers() {
                 <div className="flex items-center">
                   <UserIcon className="h-5 w-5 mr-2" />
                   <Typography variant="body2" className="w-full flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2">
                     <strong  className="font-semibold">Name:</strong><span className="text-sm">{driver.name}</span>
                     <div className="flex items-center ml-2">
                       <Rating
@@ -151,6 +152,7 @@ function Drivers() {
                       />
                       <span className="flex  ml-3">{driver.rating}</span>
                       
+                    </div>
                     </div>
                   </Typography>
                 </div>
