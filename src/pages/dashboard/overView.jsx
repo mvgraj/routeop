@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardBody, Typography } from '@material-tailwind/react';
+import { useLocation } from 'react-router-dom';
 
 export function OverView() {
   
@@ -13,6 +14,16 @@ export function OverView() {
     {name:'Type', details:'Truck'}
 
   ]
+
+  const [vehicle, setVehicle] = useState(null)
+  const location = useLocation();
+
+useEffect(() => {
+  if (location.state?.vehicle){
+    setVehicle(location.state.vehicle)
+  }
+})
+
   return (
     <div className='mt-5'>
         <div className='mt-3 overflow-y-scroll max-h-[660px] rounded-md'>

@@ -14,19 +14,20 @@ const VehicleData = [
     id: 1,
     image: LorryImage,
     status: "Active",
-    vehicleNo: "Vehicle 1",
+    vehicleNo: "V001",
     chassisNo: "12345",
     capacity: "20 tons",
     fuel: "Diesel",
     lastMaintenanceDate: "2024-07-01",
     RUL: "5000 km",
-    location:"vizag"
+    location:"vizag",
+    location1: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.9051038798!2d78.243236602612!3d17.412608636450027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1721726269423!5m2!1sen!2sin",   
   },
   {
     id: 2,
     image: lorry2,
     status: "Maintenance",
-    vehicleNo: "Vehicle 2",
+    vehicleNo: "V002",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -38,7 +39,7 @@ const VehicleData = [
     id: 3,
     image: lorry3,
     status: "Available",
-    vehicleNo: "Vehicle 3",
+    vehicleNo: "V003",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -50,7 +51,7 @@ const VehicleData = [
     id: 4,
     image: lorry4,
     status: "Active",
-    vehicleNo: "Vehicle 4",
+    vehicleNo: "V004",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -62,7 +63,7 @@ const VehicleData = [
     id: 5,
     image: lorry5,
     status: "Maintenance",
-    vehicleNo: "Vehicle 5",
+    vehicleNo: "V005",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -74,7 +75,7 @@ const VehicleData = [
     id: 6,
     image: lorry3,
     status: "Active",
-    vehicleNo: "Vehicle 6",
+    vehicleNo: "V006",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -86,7 +87,7 @@ const VehicleData = [
     id: 7,
     image: lorry5,
     status: "Maintenance",
-    vehicleNo: "Vehicle 7",
+    vehicleNo: "V007",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -98,7 +99,7 @@ const VehicleData = [
     id: 8,
     image: lorry2,
     status: "Available",
-    vehicleNo: "Vehicle 8",
+    vehicleNo: "V008",
     chassisNo: "11223",
     capacity: "10 tons",
     fuel: "Diesel",
@@ -110,19 +111,20 @@ const VehicleData = [
     id: 9,
     image: lorry4,
     status: "Active",
-    vehicleNo: "Vehicle 9",
+    vehicleNo: "V009",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
     lastMaintenanceDate: "2024-06-15",
     RUL: "3000 km",
-    location:"vizag"
+    location:"vizag",
+
   },
   {
     id: 10,
     image: LorryImage,
     status: "Maintenance",
-    vehicleNo: "Vehicle 10",
+    vehicleNo: "V0010",
     chassisNo: "67890",
     capacity: "15 tons",
     fuel: "Petrol",
@@ -141,11 +143,11 @@ function Fleet() {
       chassisNo: "",
       manufacturer: "",
       odometer: "",
-      location: "",
       capacity: "",
       fuel: "",
       lastMaintenanceDate: "",
       RUL: "",
+     
     },
   ]);
   const [filter, setFilter] = useState("All");
@@ -222,8 +224,8 @@ function Fleet() {
     // Handle saving vehicles here
   };
 
-  const navigatetoheader = () => {
-    navigate("/dashboard/Vehicle_analysis");
+  const navigatetoheader = (vehicle) => {
+    navigate("/dashboard/Vehicle_analysis",{state: {vehicle}});
   };
 
   const handleFilterChange = (status) => {
@@ -466,7 +468,9 @@ function Fleet() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {filteredVehicleData().map((vehicle) => (
-          <Card key={vehicle.id} className="w-full max-w-sm cursor-pointer" onClick={() => navigatetoheader()}>
+          
+          <Card key={vehicle.id} className="w-full max-w-sm cursor-pointer" onClick={() => navigatetoheader(vehicle)}>
+            
             <CardBody className="flex flex-col">
               <div className="relative h-32 overflow-hidden rounded-t-lg">
                 <img
