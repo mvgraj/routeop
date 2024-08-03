@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardBody, Typography } from '@material-tailwind/react';
 import { useLocation } from 'react-router-dom';
+import tesla from './img/tesla.jpg'
 
 export function OverView() {
   
@@ -21,7 +22,10 @@ export function OverView() {
 useEffect(() => {
   if (location.state?.vehicle){
     setVehicle(location.state.vehicle)
+    console.log('overview ',location.state.vehicle)
   }
+
+  console.log('from overview vehicle:',vehicle)
 })
 
   return (
@@ -196,7 +200,8 @@ useEffect(() => {
                 <div className='mt-5 '>
                   <p className='font-semibold'>Current vehicle:</p>
               <img
-                src="/img/truck4.webp"
+              // src = "/img/truck4.webp"
+                src={(vehicle && vehicle.image) || "/img/truck4.webp"}
                 alt="Analysis"
                 className="h-[250px] w-100 object-cover rounded-lg border border-gray-200 mt-3"
               />
@@ -207,7 +212,7 @@ useEffect(() => {
               <div className='items-center'>
                   <p className='font-semibold mt-5'>Suggested vehicle: <span>EV Truck</span></p>
               <img
-                src="/img/lorry.jpg"
+                src={tesla}
                 alt="Analysis"
                 className="h-[250px] w-100 object-cover rounded-lg border border-gray-200 mt-3"
               />

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -12,28 +12,30 @@ import {
 import TruckImage from "./img/lorry.jpg";
 import Rating from 'react-rating-stars-component';
 import { CameraIcon } from '@heroicons/react/24/outline';
-
+import axios from "axios";
 function Assign() {
   const [freightData, setFreightData] = useState([
     {
       type: "",
+      freight_req: "",
       size: "",
-      fromLocation: "",
-      toLocation: "",
+      from_location: "",
+      to_location: "",
       dimensions: "",
       refrigeration: null, // null for unselected, true for yes, false for no
-      deliveryDate: "",
-      pickupDate: "",
-      driverName: "", // Added driverName field
-      driverID: "", // Added driverID field
+      delivery_date: "",
+      pickup_date: "",
+      
     },
   ]);
 
-  const [view, setView] = useState("form"); // State to switch between views
+
+  const [view, setView] = useState(false); // State to switch between views
   const fileInputRef = useRef(null);
 
   const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState('');
+  const [truck,setTruck] = useState([])
 
   const [text1,setText1] =useState('Select');
   const [text2,setText2] =useState('Select');
@@ -89,45 +91,85 @@ function Assign() {
     console.log(file);
   };
 
-  const handleInputChange = (e, index, field) => {
+  const handleInputChange = (value, index, field) => {
     const newFreightData = [...freightData];
-    if (field === "refrigeration") {
-      newFreightData[index][field] = e.target.value === "yes";
-    } else {
-      newFreightData[index][field] = e.target.value;
-    }
+    newFreightData[index][field] = value;
     setFreightData(newFreightData);
   };
 
-  const addNewFreight = () => {
-    setFreightData([
-      ...freightData,
-      {
-        type: "",
-        size: "",
-        fromLocation: "",
-        toLocation: "",
-        dimensions: "",
-        refrigeration: null,
-        deliveryDate: "",
-        pickupDate: "",
-        driverName: "", // Initialize driverName for new freight
-        driverID: "", // Initialize driverID for new freight
-      },
-    ]);
-  };
-
-  const triggerFileInput = () => {
-    fileInputRef.current.click();
-  };
 
   const handleNext = () => {
-    setView("fleet");
+    setView('fleet');
   };
 
   const handleBack = () => {
-    setView("form");
+    setView(false);
   };
+
+  const handleSave = async () => {
+    const freight = freightData[0];
+    const formData = new FormData();
+    // setView('fleet');
+  
+    // Append freight data
+    formData.append("type", freight.type);
+    formData.append("freight_req", freight.freight_req);  // Ensure field names match
+    formData.append("size", freight.size);
+    formData.append("from_location", freight.from_location);
+    formData.append("to_location", freight.to_location);
+    formData.append("dimensions", freight.dimensions);
+    formData.append("refrigeration", freight.refrigeration); // Convert boolean to string
+    formData.append("delivery_date", freight.delivery_date);
+    formData.append("pickup_date", freight.pickup_date);
+  
+    // Append image if exists
+    if (image) {
+      try {
+        const response = await fetch(image);
+        const blob = await response.blob();
+        formData.append('freight_img', blob, imageName);
+      } catch (fetchError) {
+        console.error("Error fetching image:", fetchError);
+        return; // Exit early if image fetch fails
+      }
+    }
+  
+    try {
+      const response = await axios.post("http://localhost:8000/api/recommend_top_vehicles", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      console.log("Freight data saved:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Error saving freight data:", error.response?.data || error.message);
+      return; // Ensure some value is returned
+    }
+  };
+  
+
+  useEffect(() => {
+    const getTruck = async () => {
+      try {
+        const data = await handleSave(); // Ensure `handleSave` returns data with a `top_vehicles` property
+        if (data && data.top_vehicles) {
+          console.log('useEffect data:', data.top_vehicles);
+          setTruck(data.top_vehicles); // Set the state with the array of vehicles
+        } else {
+          console.log('No top vehicles data available');
+        }
+      } catch (error) {
+        console.error("Error in useEffect:", error);
+      }
+    };
+  
+    getTruck();
+  }, []);
+  
+  
+
 
   if (view === "fleet") {
     return (
@@ -146,78 +188,113 @@ function Assign() {
           <Typography variant="h5" className="text-gray-800 font-medium mb-4">
             Your Fleet Options
           </Typography>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  
-              <Card
-                className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
-              >
-                <img
-                  src={TruckImage}
-                  alt='truck'
-                  className="h-40 w-full object-cover rounded-t-lg"
-                />
-                <div
-                  className="p-4"
-                  style={{ backgroundColor: "#006d00", color: "white", opacity:'0.7' }}
-                >
-                  <Typography variant="body1" className="font-medium mb-1">
-                    EcoTruck X1
-                  </Typography>
-                  <Typography variant="body2">Lowest carbon emission</Typography>
-                </div>
-              </Card>
-              <Card
-                className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
-              >
-                <img
-                  src={TruckImage}
-                  alt='truck'
-                  className="h-40 w-full object-cover rounded-t-lg"
-                />
-                <div
-                  className="p-4"
-                  style={{ backgroundColor: "#ffbb5a", color: "white",opacity:'01' }}
-                >
-                  <Typography variant="body1" className="font-medium mb-1">
-                  EconomyTruck Y2
-                  </Typography>
-                  <Typography variant="body2">Lowest cost with moderate emissions</Typography>
-                </div>
-              </Card>
-              <Card
-                className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
-              >
-                <img
-                  src={TruckImage}
-                  alt='truck'
-                  className="h-40 w-full object-cover rounded-t-lg"
-                />
-                <div
-                  className="p-4"
-                  style={{ backgroundColor: "#b10000", color: "white" , opacity:'0.7'}}
-                >
-                  <Typography variant="body1" className="font-medium mb-1">
-                  SpeedTruck Z3
-                  </Typography>
-                  <Typography variant="body2">Lowest Time with higher emissions</Typography>
-                </div>
-              </Card>
+          <div className=" gap-6">
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4">
+              {truck.length > 0 ? (
+                truck.map((vehicle, index) => {
+                  // Define background colors for the cards based on their index
+                  const backgroundColors = ['#006d00', '#FFA500', '#FF0000']; // Green, Orange, Red
+                  const backgroundColor = backgroundColors[index % backgroundColors.length]; // Select color
+
+                  return (
+                    <Card
+                      key={index}
+                      className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+                    >
+                      <img
+                        src={TruckImage} // This can be dynamic if you have specific images for each vehicle
+                        alt='truck'
+                        className="h-40 w-full object-cover rounded-t-lg"
+                      />
+                      <div
+                        className="p-4"
+                        style={{ backgroundColor: backgroundColor, color: 'white', opacity: '0.7' }}
+                      >
+                        <Typography variant="body1" className="font-medium mb-1">
+                          Vehicle ID: {vehicle.vehicle_id}
+                        </Typography>
+                        <Typography variant="body2">
+                          Efficiency Score: {vehicle.efficiency_score.toFixed(2)}
+                        </Typography>
+                        <Typography variant="body2">
+                          Total Cost: ${vehicle.total_cost.toFixed(2)}
+                        </Typography>
+                        <Typography variant="body2">
+                          Total Emissions: {vehicle.total_emissions.toFixed(2)} kg
+                        </Typography>
+                      </div>
+                    </Card>
+                  );
+                })
+              ) : (
+                // Ensure this section has the same grid layout
+                <>
+                  <Card
+                    className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+                  >
+                    <img
+                      src={TruckImage}
+                      alt='truck'
+                      className="h-40 w-full object-cover rounded-t-lg"
+                    />
+                    <div
+                      className="p-4"
+                      style={{ backgroundColor: "#006d00", color: "white", opacity: '0.7' }}
+                    >
+                      <Typography variant="body1" className="font-medium mb-1">
+                        EcoTruck X1
+                      </Typography>
+                      <Typography variant="body2">Lowest carbon emission</Typography>
+                    </div>
+                  </Card>
+                  <Card
+                    className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+                  >
+                    <img
+                      src={TruckImage}
+                      alt='truck'
+                      className="h-40 w-full object-cover rounded-t-lg"
+                    />
+                    <div
+                      className="p-4"
+                      style={{ backgroundColor: "#ffbb5a", color: "white", opacity: '0.7' }}
+                    >
+                      <Typography variant="body1" className="font-medium mb-1">
+                        EconomyTruck Y2
+                      </Typography>
+                      <Typography variant="body2">Lowest cost with moderate emissions</Typography>
+                    </div>
+                  </Card>
+                  <Card
+                    className="flex flex-col shadow-lg rounded-lg transition-transform transform hover:scale-105"
+                  >
+                    <img
+                      src={TruckImage}
+                      alt='truck'
+                      className="h-40 w-full object-cover rounded-t-lg"
+                    />
+                    <div
+                      className="p-4"
+                      style={{ backgroundColor: "#b10000", color: "white", opacity: '0.7' }}
+                    >
+                      <Typography variant="body1" className="font-medium mb-1">
+                        SpeedTruck Z3
+                      </Typography>
+                      <Typography variant="body2">Lowest Time with higher emissions</Typography>
+                    </div>
+                  </Card>
+                </>
+              )}
+            </div>
+
+
+             
   
           </div>
           <Typography variant="h5" className="text-gray-800 font-medium mt-8 mb-4">
             Assigned Driver
           </Typography>
           <Card className="mb-6 p-3 bg-white border border-gray-300 rounded-lg shadow-md max-w-md">
-            {/* <CardBody className="flex flex-col gap-4">
-              <div className="grid grid-cols-3 gap-4 items-center">
-                <Typography>Driver Name</Typography>
-                <Typography className="col-span-2 font-medium">John Doe</Typography>
-              </div>
-              <div className="grid grid-cols-3 gap-4 items-center">
-                <Typography>Driver ID</Typography>
-                <Typography className="col-span-2 font-medium">D123456</Typography>
-              </div>
-            </CardBody> */}
             <table>
               <thead className="text-left">
                 <tr className="border-b text-sm ">
@@ -304,7 +381,7 @@ function Assign() {
           <CardHeader
             floated={false}
             shadow={false}
-            color="transparent"
+            // color="transparent"
             className="m-0 mb-4 flex justify-between items-center"
           >
             <Typography variant="h6" color="blue-gray" className="mb-2">
@@ -312,39 +389,41 @@ function Assign() {
             </Typography>
 
           </CardHeader>
-          <CardBody className="flex flex-col grid grid-cols-1 xl:grid-cols-2 gap-4 text-sm">
+          <CardBody className="flex flex-col grid grid-cols-1 xl:grid-cols-2 gap-4">
             <div className="grid gap-4 " style={{ width: '150%' }}>
             <div className="grid grid-cols-3 gap-4 items-center" >
               <Typography>Type</Typography>
               <Select
-              label="Select an option"
-              value={freight.type}
-              onChange={(e) => handleInputChange(e, index, "type")}
-              color="lightBlue"
-            >
-              <Option value="option1">Dry Freight</Option>
-              <Option value="option2">Refrigerated Freight </Option>
-              <Option value="option3">Liquid Freight</Option>
-              <Option value="option3">Bulk Freight</Option>
-              <Option value="option3">Containerized Freight</Option>
-              <Option value="option3">Pharmaceutical Freight</Option>
-            </Select>
+                label="Select an option"
+                value={freight.type}
+                onChange={(e) => handleInputChange(e, index, "type")}
+                color="indigo"
+              >
+                <Option value="Dry Freight">Dry Freight</Option>
+                <Option value="Refrigerated Freight">Refrigerated Freight </Option>
+                <Option value="Liquid Freight">Liquid Freight</Option>
+                <Option value="Bulk Freight">Bulk Freight</Option>
+                <Option value="Containerized Freight">Containerized Freight</Option>
+                <Option value="Pharmaceutical Freight">Pharmaceutical Freight</Option>
+              </Select>
+            <script type="text/javascript"> console.log(e) </script>
 
             </div>
+            
             <div className="grid grid-cols-3 gap-4 items-center">
               <Typography>Freight Requeriments</Typography>
               <Select
-              label="Select an option"
-              value={freight.type}
-              onChange={(e) => handleInputChange(e, index, "type")}
-              color="lightBlue"
-            >
-              <Option value="option1">Breakbulk Cargo</Option>
-              <Option value="option2">Live Animal Transport</Option>
-              <Option value="option3">Perishable Goods</Option>
-              <Option value="option3">Fragile Freight</Option>
-              <Option value="option3">Medical and Healthcare Equipment</Option>
-            </Select>
+                label="Select an option"
+                value={freight.freight_req}
+                onChange={(e) => handleInputChange(e, index, "freight_req")}
+                color="indigo"
+              >
+                <Option value="Breakbulk Cargo">Breakbulk Cargo</Option>
+                <Option value="Live Animal Transport">Live Animal Transport</Option>
+                <Option value="Perishable Goods">Perishable Goods</Option>
+                <Option value="Fragile Freight">Fragile Freight</Option>
+                <Option value="Medical and Healthcare Equipment">Medical and Healthcare Equipment</Option>
+              </Select>
 
             </div>
             <div className="grid grid-cols-3 gap-4 items-center">
@@ -353,7 +432,7 @@ function Assign() {
                 type="text"
                 name="size"
                 value={freight.size}
-                onChange={(e) => handleInputChange(e, index, "size")}
+                onChange={(e) => handleInputChange(e.target.value, index, "size")}
                 className="col-span-2 form"
                 label="Size (Tons)"
               />
@@ -363,8 +442,8 @@ function Assign() {
               <Input
                 type="text"
                 name="fromLocation"
-                value={freight.fromLocation}
-                onChange={(e) => handleInputChange(e, index, "fromLocation")}
+                value={freight.from_location}
+                onChange={(e) => handleInputChange(e.target.value, index, "from_location")}
                 className="col-span-2"
                 label="From Location"
               />
@@ -374,8 +453,8 @@ function Assign() {
               <Input
                 type="text"
                 name="toLocation"
-                value={freight.toLocation}
-                onChange={(e) => handleInputChange(e, index, "toLocation")}
+                value={freight.to_location}
+                onChange={(e) => handleInputChange(e.target.value, index, "to_location")}
                 className="col-span-2"
                 label="To Location"
               />
@@ -386,7 +465,7 @@ function Assign() {
                 type="text"
                 name="dimensions"
                 value={freight.dimensions}
-                onChange={(e) => handleInputChange(e, index, "dimensions")}
+                onChange={(e) => handleInputChange(e.target.value, index, "dimensions")}
                 className="col-span-2"
                 label="Dimensions"
               />
@@ -394,22 +473,22 @@ function Assign() {
             <div className="grid grid-cols-3 gap-4 items-center">
               <Typography>Refrigeration</Typography>
               <div className="col-span-2 flex items-center space-x-4">
-                <Radio
-                  id={`refrigeration-yes-${index}`}
-                  name={`refrigeration-${index}`}
-                  value="yes"
-                  checked={freight.refrigeration === true}
-                  onChange={(e) => handleInputChange(e, index, "refrigeration")}
-                  label="Yes"
-                />
-                <Radio
-                  id={`refrigeration-no-${index}`}
-                  name={`refrigeration-${index}`}
-                  value="no"
-                  checked={freight.refrigeration === false}
-                  onChange={(e) => handleInputChange(e, index, "refrigeration")}
-                  label="No"
-                />
+              <Radio
+                id={`refrigeration-yes-${index}`}
+                name={`refrigeration-${index}`}
+                value="yes"
+                checked={freight.refrigeration === true}
+                onChange={() => handleInputChange(true, index, "refrigeration")}
+                label="Yes"
+              />
+              <Radio
+                id={`refrigeration-no-${index}`}
+                name={`refrigeration-${index}`}
+                value="no"
+                checked={freight.refrigeration === false}
+                onChange={() => handleInputChange(false, index, "refrigeration")}
+                label="No"
+              />
               </div>
             </div>
             <div className="grid grid-cols-3 gap-4 items-center">
@@ -417,8 +496,8 @@ function Assign() {
               <Input
                 type="date"
                 name="pickupDate"
-                value={freight.pickupDate}
-                onChange={(e) => handleInputChange(e, index, "pickupDate")}
+                value={freight.pickup_date}
+                onChange={(e) => handleInputChange(e.target.value, index, "pickup_date")}
                 className="col-span-2"
                 label="Pickup Date"
               />
@@ -428,8 +507,8 @@ function Assign() {
               <Input
                 type="date"
                 name="deliveryDate"
-                value={freight.deliveryDate}
-                onChange={(e) => handleInputChange(e, index, "deliveryDate")}
+                value={freight.delivery_date}
+                onChange={(e) => handleInputChange(e.target_value, index, "delivery_date")}
                 className="col-span-2"
                 label="Delivery Date"
               />
@@ -471,7 +550,7 @@ function Assign() {
           </CardBody>
           <div className="flex justify-between">
           <Button
-              
+              onClick={handleSave}
               style={{ backgroundColor: "#41729F", color: "white" }}
               className="flex inline-block self-end justify-end mt-4 mb-4 rounded-lg"
             >

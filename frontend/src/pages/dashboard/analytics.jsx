@@ -8,6 +8,11 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
+import LorryImage from "./img/lorry1.png";
+import lorry2 from "./img/lorry2.png"
+import lorry3 from "./img/lorry3.png"
+import lorry4 from "./img/lorry4.jpg"
+import lorry5 from "./img/lorry5.png"
 
 // Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
@@ -105,8 +110,8 @@ const emission=[
 // Dummy data for vehicles
 const vehicles = [
   {
-    image: "/img/lorry.jpg",
-    name: "10101",
+    image: LorryImage,
+    vehicleNo: "V001",
     recentTrips: "5",
     resaleValue: "15,000",
     lastMaintenance: "2024-06-15",
@@ -114,8 +119,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/truck4.webp",
-    name: "10102",
+    image: lorry2 ,
+    vehicleNo: "V002",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
@@ -123,8 +128,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/lorry.jpg",
-    name: "10103",
+    image: lorry3 ,
+    vehicleNo: "V003",
     recentTrips: "5",
     resaleValue: "15,000",
     lastMaintenance: "2024-06-15",
@@ -132,8 +137,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/truck4.webp",
-    name: "10104",
+    image: lorry4 ,
+    vehicleNo: "V004",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
@@ -141,8 +146,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/lorry.jpg",
-    name: "10105",
+    image: lorry5 ,
+    vehicleNo: "V005",
     recentTrips: "5",
     resaleValue: "15,000",
     lastMaintenance: "2024-06-15",
@@ -150,8 +155,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/truck4.webp",
-    name: "10106",
+    image: lorry2 ,
+    vehicleNo: "V006",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
@@ -159,8 +164,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/truck4.webp",
-    name: "10107",
+    image:LorryImage ,
+    vehicleNo: "V007",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
@@ -168,8 +173,8 @@ const vehicles = [
     milage: "102",
   },
   {
-    image: "/img/truck4.webp",
-    name: "10108",
+    image: lorry4 ,
+    vehicleNo: "V008",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
@@ -266,7 +271,7 @@ function Analytics() {
                   <td className="px-6 py-3 cursor-pointer">
                     <div className="flex items-center" onClick={() => navigatetoheader(vehicle)}>
                       <img src={vehicle.image} alt={vehicle.name} className="h-9 w-9 rounded-full object-cover mr-4" />
-                      <td  className="text-sm text-gray-800" >{vehicle.name}</td>
+                      <td  className="text-sm text-gray-800" >{vehicle.vehicleNo}</td>
                     </div>
                   </td>
                   <td className="px-8 py-3 ">

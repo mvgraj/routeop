@@ -226,6 +226,8 @@ function Fleet() {
 
   const navigatetoheader = (vehicle) => {
     navigate("/dashboard/Vehicle_analysis",{state: {vehicle}});
+    navigate("/dashboard/Vehicle_analysis/overview",{state: {vehicle}});
+
   };
 
   const handleFilterChange = (status) => {
