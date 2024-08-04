@@ -116,15 +116,15 @@ async def get_dashboard_data():
 # Sample vehicle data
 vehicle_data = [
     {"id": 1, "status": "Active", "vehicleNo": "Vehicle 1", "chassisNo": "12345", "capacity": "20 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-07-01", "RUL": "5000 km", "location": "vizag"},
-    {"id": 2, "status": "Maintenance", "vehicleNo": "Vehicle 2", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 3, "status": "Available", "vehicleNo": "Vehicle 3", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 4, "status": "Active", "vehicleNo": "Vehicle 4", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 5, "status": "Maintenance", "vehicleNo": "Vehicle 5", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 6, "status": "Active", "vehicleNo": "Vehicle 6", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 7, "status": "Maintenance", "vehicleNo": "Vehicle 7", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 2, "status": "Maintenance", "vehicleNo": "Vehicle 2", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 3, "status": "Available", "vehicleNo": "Vehicle 3", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 4, "status": "Active", "vehicleNo": "Vehicle 4", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 5, "status": "Maintenance", "vehicleNo": "Vehicle 5", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 6, "status": "Active", "vehicleNo": "Vehicle 6", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 7, "status": "Maintenance", "vehicleNo": "Vehicle 7", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
     {"id": 8, "status": "Available", "vehicleNo": "Vehicle 8", "chassisNo": "11223", "capacity": "10 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-07-10", "RUL": "7000 km", "location": "vizag"},
-    {"id": 9, "status": "Active", "vehicleNo": "Vehicle 9", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
-    {"id": 10, "status": "Maintenance", "vehicleNo": "Vehicle 10", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Petrol", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 9, "status": "Active", "vehicleNo": "Vehicle 9", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
+    {"id": 10, "status": "Maintenance", "vehicleNo": "Vehicle 10", "chassisNo": "67890", "capacity": "15 tons", "fuel": "Diesel", "lastMaintenanceDate": "2024-06-15", "RUL": "3000 km", "location": "vizag"},
 ]
 
 @app.get("/vehicles")
@@ -761,7 +761,7 @@ async def get_trip_details():
         "modelId": "M001",
         "manufacturer": "Manufacturer A",
         "locationName": "Trip Location A",
-        "fuel": "petrol",
+        "fuel": "Diesel",
         "operatingCost": {
             "fuel": "500",
             "maintenance": "200",

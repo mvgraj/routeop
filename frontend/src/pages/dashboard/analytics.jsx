@@ -8,12 +8,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { SlCalender } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
-import LorryImage from "./img/lorry1.png";
-import lorry2 from "./img/lorry2.png"
-import lorry3 from "./img/lorry3.png"
-import lorry4 from "./img/lorry4.jpg"
-import lorry5 from "./img/lorry5.png"
-
+import LorryImage from "./img/Ashok_LP.jpg";
+import lorry2 from "./img/tata_ace.jpg"
+import lorry3 from "./img/mahindra_b.jpg"
+import lorry4 from "./img/mahindra_dost.jpg"
+import lorry5 from "./img/lorry.jpg"
+import lorry6 from "./img/mahindra_f.jpg"
+import lorry7 from "./img/Eicher_g.jpg"
+import lorry8 from "./img/BharatBenz.jpg"
+import lorry9 from "./img/SML_i.jpg"
+import lorry10 from "./img/Force_m.webp"
 // Register Chart.js components
 ChartJS.register(Title, Tooltip, Legend, LineElement, CategoryScale, LinearScale);
 
@@ -117,6 +121,12 @@ const vehicles = [
     lastMaintenance: "2024-06-15",
     emissions: "100",
     milage: "102",
+    TruckName:"Ashok Leyland Boss",
+    year:'2010',
+    manufacturer:'Ashok Leyland',
+    location:"Maharashtra",
+    chassisNo: "MBL4D4BXYH123456",
+    location:"Maharashtra",
   },
   {
     image: lorry2 ,
@@ -126,6 +136,15 @@ const vehicles = [
     lastMaintenance: "2024-05-22",
     emissions: "100",
     milage: "102",
+    chassisNo: "TMBK1D3BXYF123456",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Tata Ace",
+    year:'2009',
+    manufacturer:'Tata Motors',
+    location:"Karnataka"
   },
   {
     image: lorry3 ,
@@ -135,6 +154,23 @@ const vehicles = [
     lastMaintenance: "2024-06-15",
     emissions: "100",
     milage: "102",
+    chassisNo: "MA1TZS4SML123456",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Mahindra Bolero Pik-Up",
+    year:'2015',
+    manufacturer:'Mahindra',
+    chassisNo: "RCL4D4BXYH123456",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Ashok Leyland Dost",
+    year:'2010',
+    manufacturer:'Ashok Leyland',
+    location:"Tamil Nadu"
   },
   {
     image: lorry4 ,
@@ -144,6 +180,15 @@ const vehicles = [
     lastMaintenance: "2024-05-22",
     emissions: "100",
     milage: "102",
+    chassisNo: "MBL5D4BXYJ987654",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Ashok Leyland U-Truck",
+    year:'2010',
+    manufacturer:'Ashok Leyland',
+    location:"Telangana"
   },
   {
     image: lorry5 ,
@@ -153,33 +198,69 @@ const vehicles = [
     lastMaintenance: "2024-06-15",
     emissions: "100",
     milage: "102",
+    chassisNo: "MA1TZS4SML654321",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Mahindra Furio",
+    year:'2010',
+    manufacturer:'Mahindra',
+    location:"Andhra Pradesh"
   },
   {
-    image: lorry2 ,
+    image: lorry6 ,
     vehicleNo: "V006",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
     emissions: "100",
     milage: "102",
+    chassisNo: "VEK7D4BXYJ987654",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"Eicher Gladiator",
+    year:'2010',
+    manufacturer:'Eicher Motors',
+     location:"Tamil Nadu"
   },
   {
-    image:LorryImage ,
+    image:lorry7 ,
     vehicleNo: "V007",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
     emissions: "100",
     milage: "102",
+    chassisNo: "DB2T4D5BXYF987654",
+    capacity: "10 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-07-10",
+    RUL: "7000 km",
+    TruckName:"BharatBenz 3128",
+    year:'2010',
+    manufacturer:'BharatBenz',
+    location:"Andhra Pradesh"
   },
   {
-    image: lorry4 ,
+    image: lorry8 ,
     vehicleNo: "V008",
     recentTrips: "8",
     resaleValue: "20,000",
     lastMaintenance: "2024-05-22",
     emissions: "100",
     milage: "102",
+    chassisNo: "SML6D4BXYH987654",
+    capacity: "15 tons",
+    fuel: "Diesel",
+    lastMaintenanceDate: "2024-06-15",
+    RUL: "3000 km",
+    TruckName:"SML Isuzu Supreme",
+    year:'2010',
+    manufacturer:'SML Isuzu',
+    location:"Maharashtra"
   },
   // Add more vehicles as needed
 ];
@@ -259,7 +340,7 @@ function Analytics() {
             <thead className="text-left font-semibold text-gray-800 text-sm">
               <tr className="border-y">
                 <th className="px-6 py-4" >Vehicle Id</th>
-                <th className="px-4 py-3">Total Trips</th>
+                <th className="px-1 py-3">Total Trips</th>
                 <th className="px-6 py-3">Last Maintenance</th>
                 <th className="px-6 py-3">Emission</th>
                 <th className="px-6 py-3">Mileage</th>
@@ -268,13 +349,13 @@ function Analytics() {
             <tbody className="text-xs">
               {vehicles.map((vehicle, index) => (
                 <tr className="text-sm text-gray-800 border-b" key={index}>
-                  <td className="px-6 py-3 cursor-pointer">
+                  <td className="px-3 py-3 cursor-pointer">
                     <div className="flex items-center" onClick={() => navigatetoheader(vehicle)}>
                       <img src={vehicle.image} alt={vehicle.name} className="h-9 w-9 rounded-full object-cover mr-4" />
                       <td  className="text-sm text-gray-800" >{vehicle.vehicleNo}</td>
                     </div>
                   </td>
-                  <td className="px-8 py-3 ">
+                  <td className="px-5 py-3 ">
                     {vehicle.recentTrips}
                   </td>
                   <td className="px-6 py-3 ">

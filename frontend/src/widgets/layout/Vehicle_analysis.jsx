@@ -20,7 +20,7 @@ export function Vehicle_Analysis() {
   }
   console.log(location.state);
   console.log('vehicle data:',vehicle)
-  console.log('location',vehicle.location)
+  console.log('location',vehicle.TruckName)
 
   return (
     <div className='mt-5'>
@@ -38,11 +38,16 @@ export function Vehicle_Analysis() {
               <h2 className='text-lg font-semibold mb-1'>{vehicle.vehicleNo || 'V001'}</h2>
               <p className={`p-0.5 font-semibold ${vehicle.status === 'Active' ? 'text-green-600' : vehicle.status === 'Maintenance' ? 'text-orange-600' : vehicle.status === 'Available' ? 'text-yellow-600' : ''}`}> · {vehicle.status || 'Active'}</p>
             </div>
-            <p className='text-gray-600 mb-1 text-sm'>SUV · 2012 Nissan Pathfinder · 5N1AR1NB7CC614990</p>
+            <div className='flex gap-2 text-sm text-gray-600 mb-1'>
+              <p>{vehicle.TruckName}</p>
+              <p> · {vehicle.year}</p>
+              <p>{vehicle.manufacturer}</p>
+              <p>· {vehicle.chassisNo}</p>
+            </div>
             <div className='flex text-sm'>
-              <p className='text-gray-600 mr-6'>95,284 mi </p>
-              <p className='text-gray-600 mr-5'>Austin</p>
-              <p className='text-gray-600 mr-5'> Lex Water</p>
+              <p className='text-gray-600 mr-6'>95,284 Km </p>
+              <p className='text-gray-600 mr-5'>{vehicle.location}</p>
+              {/* <p className='text-gray-600 mr-5'> Lex Water</p> */}
             </div>
           </div>
         </div>

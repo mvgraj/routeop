@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Card, CardBody, Button } from "@material-tailwind/react";
-import { TruckIcon, UserIcon, ShieldCheckIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
+import { TruckIcon, ShieldCheckIcon, WrenchScrewdriverIcon } from "@heroicons/react/24/outline";
 import LorryImage from './img/lorry.jpg'
 
 // Dummy data for trips
@@ -10,7 +10,7 @@ const tripDetails = [
       chassisId: "C001",
       modelId: "M001",
       manufacturer: "Manufacturer A",
-      fuel:"petrol",
+      fuel:"Diesel",
       operatingCost: {
         fuel: "500",
         maintenance: "200",
@@ -144,7 +144,7 @@ const tripDetails = [
       chassisId: "C003",
       modelId: "M003",
       manufacturer: "Manufacturer C",
-      fuel:"petrol",
+      fuel:"Diesel",
       operatingCost: {
         fuel: "700",
         maintenance: "300",
@@ -209,7 +209,7 @@ const tripDetails = [
       chassisId: "C004",
       modelId: "M004",
       manufacturer: "Manufacturer D",
-      fuel:"petrol",
+      fuel:"Diesel",
       operatingCost: {
         fuel: "550",
         maintenance: "220",
@@ -463,56 +463,7 @@ const tripDetails = [
       "kmsTraveled": "210",
       "time": "4 hours 25 minutes",
       "tripId": "TRIP20240807-008"
-    },{
-      "vehicleId": "V009",
-      "chassisId": "C009",
-      "modelId": "M009",
-      "manufacturer": "Manufacturer I",
-      "fuel": "petrol",
-      "operatingCost": {
-        "fuel": "520",
-        "maintenance": "270",
-        "drivercost": "530",
-        "toll": "140",
-        "total": "1460"
-      },
-      "driverBehavior": {
-        "driverid": "D239",
-        "name": "Johnson",
-        "speed": "78",
-        "harshBraking": "3",
-        "idling": "9"
-      },
-      "freight": [
-        {
-          "id": "F009",
-          "status": "In Transit",
-          "load": "5 tons",
-          "goodsType": "Automotive Parts",
-          "dimensions": "3x2x1.5m"
-        }
-      ],
-      "log": [
-        {
-          "id": "P014",
-          "issue": "Electrical System Fault",
-          "description": "Fault in the electrical system, affecting lights and signals."
-        },
-        {
-          "id": "P015",
-          "issue": "Suspension Misalignment",
-          "description": "Suspension misalignment causing steering issues."
-        }
-      ],
-      "location": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243208.19691152088!2d83.09778269818275!3d17.7386034156062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6973f%3A0x92d9c20395498468!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1722681047417!5m2!1sen!2sin",
-      "locationName": "Visakhapatnam",
-      "date": "25-04-2022",
-      "driverId": "DRV-20240103-111",
-      "kmsTraveled": "190",
-      "time": "3 hours 50 minutes",
-      "tripId": "TRIP20240808-009"
-    }
-    
+    },
     
     
     

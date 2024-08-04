@@ -109,7 +109,7 @@ function Assign() {
   const handleSave = async () => {
     const freight = freightData[0];
     const formData = new FormData();
-    // setView('fleet');
+    setView('fleet');
   
     // Append freight data
     formData.append("type", freight.type);
@@ -173,6 +173,7 @@ function Assign() {
 
   if (view === "fleet") {
     return (
+      
       <div className="p-8 min-h-screen">
         <Typography variant="h4" className="text-gray-900 font-semibold mb-8">
           Assign Fleet
@@ -257,7 +258,7 @@ function Assign() {
                     />
                     <div
                       className="p-4"
-                      style={{ backgroundColor: "#ffbb5a", color: "white", opacity: '0.7' }}
+                      style={{ backgroundColor: "#FFA500", color: "white", opacity: '0.7' }}
                     >
                       <Typography variant="body1" className="font-medium mb-1">
                         EconomyTruck Y2
@@ -275,7 +276,7 @@ function Assign() {
                     />
                     <div
                       className="p-4"
-                      style={{ backgroundColor: "#b10000", color: "white", opacity: '0.7' }}
+                      style={{ backgroundColor: "#FF0000", color: "white", opacity: '0.7' }}
                     >
                       <Typography variant="body1" className="font-medium mb-1">
                         SpeedTruck Z3

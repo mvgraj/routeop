@@ -45,7 +45,7 @@ useEffect(() => {
                 </div>
                 <div className='ml-7'>
                   <Typography style={{ fontWeight: 500}}>Cost Per Year</Typography>
-                  <Typography variant="h5">0.90 <span className='text-'>/ml</span></Typography>
+                  <Typography variant="h5">0.90 <span className='text-'>/Km</span></Typography>
                 </div>
               </div>
               <div className='ml-7'>

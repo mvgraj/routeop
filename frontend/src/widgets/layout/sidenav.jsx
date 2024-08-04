@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   Avatar,
@@ -11,12 +11,18 @@ import { useMaterialTailwindController, setOpenSidenav } from "@/context";
 import img from './logo.jpeg';
 
 export function Sidenav({ brandImg, brandName, routes }) {
+  const navigate = useNavigate();  // Add this line
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavColor, sidenavType, openSidenav } = controller;
   const sidenavTypes = {
     dark: "bg-gradient-to-br from-gray-800 to-gray-900",
     white: "bg-white shadow-sm",
     transparent: "bg-transparent",
+  };
+
+  const handleLogout = () => {
+    // Add your logout logic here
+    navigate('/');  // Navigate to the sign-in page
   };
 
   return (
@@ -89,6 +95,17 @@ export function Sidenav({ brandImg, brandName, routes }) {
             ))}
           </ul>
         ))}
+        {/* Add the Logout Button here */}
+        <div className="absolute bottom-4 w-[200px] ms-7">
+          <Button
+            variant="outlined"
+            color="blue"
+            className="w-full"
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </div>
       </div>
     </aside>
   );
@@ -105,6 +122,6 @@ Sidenav.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-Sidenav.displayName = "/src/widgets/layout/sidnave.jsx";
+Sidenav.displayName = "/src/widgets/layout/sidenav.jsx";
 
 export default Sidenav;
