@@ -25,9 +25,9 @@ import Project_cost from "@/data/Project_cost"
 
 // Sample data for comments
 const recentCommentsData = [
-  { id: 1, name: "John Doe", profilePic: AsdImage, comment: "Great job on the recent project! The new update is fantastic. Looking forward to the next release.", timestamp: "2 hours ago" },
-  { id: 2, name: "Jane Smith", profilePic:AsdImage, comment: "The new update is fantastic. Looking forward to the next release.", timestamp: "1 day ago" },
-  { id: 3, name: "Alice Johnson", profilePic: AsdImage, comment: "Looking forward to the next release.", timestamp: "3 days ago" },
+  { id: 1, name: "Vijay Govind", profilePic: AsdImage, comment: "Great job on the recent project! The new update is fantastic. Looking forward to the next release.", timestamp: "2 hours ago" },
+  { id: 2, name: "Sai kumar", profilePic:AsdImage, comment: "The new update is fantastic. Looking forward to the next release.", timestamp: "1 day ago" },
+  { id: 3, name: "Yaswanth", profilePic: AsdImage, comment: "Looking forward to the next release.", timestamp: "3 days ago" },
 ];
 
 
