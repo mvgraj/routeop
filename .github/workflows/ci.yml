@@ -27,8 +27,9 @@ jobs:
           cd API
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Run backend tests (pytest)
-        run: cd API && pytest --maxfail=1 --disable-warnings -q || true
+      - name: Run backend tests (pytest for final_api.py)
+        run: cd API && pytest tests/test_final_api.py --maxfail=1 --disable-warnings -q
+
 
       # 4. Setup Node.js for React frontend
       - name: Setup Node.js
@@ -39,7 +40,7 @@ jobs:
 
       # 5. Install frontend dependencies & run Jest + RTL tests
       - name: Install frontend dependencies
-        run: ci
+        run: cd decarb-new && npm ci
 
       - name: Run frontend unit tests (Jest + RTL)
-        run: npm test -- --watchAll=false --ci --coverage
+        run: cd decarb-new && npm test -- --watchAll=false --ci --coverage
