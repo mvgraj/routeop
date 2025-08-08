@@ -136,17 +136,6 @@ async def cluster_and_route(
             icon=folium.Icon(color='blue', icon='user')
         ).add_to(student_map)
     
-    # # Add navigation links to the map
-    # links_html = f"""
-    # <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
-    #     <h4 style="margin: 5px 0; color: #3186cc;">Navigation</h4>
-    #     <ul style="padding-left: 15px; margin: 5px 0;">
-    #         <li><a href="/download_file/{trip_id}/student_clusters_map.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View Clusters Map</a></li>
-    #         <li><a href="/download_file/{trip_id}/all_bus_routes.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View All Bus Routes</a></li>
-    #     </ul>
-    # </div>
-    # """
-    # student_map.get_root().html.add_child(folium.Element(links_html))
     student_map_path = f"{output_dir}/student_locations.html"
     student_map.save(student_map_path)
 
@@ -205,18 +194,7 @@ async def cluster_and_route(
             icon=folium.Icon(color="red", icon="flag"),
             popup=folium.Popup(popup_html, max_width=250)
         ).add_to(cluster_map)
-    
-    # Add navigation links to the cluster map
-    # cluster_links_html = f"""
-    # <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
-    #     <h4 style="margin: 5px 0; color: #3186cc;">Navigation</h4>
-    #     <ul style="padding-left: 15px; margin: 5px 0;">
-    #         <li><a href="/download_file/{trip_id}/student_locations.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View Student Locations</a></li>
-    #         <li><a href="/download_file/{trip_id}/all_bus_routes.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View All Bus Routes</a></li>
-    #     </ul>
-    # </div>
-    # """
-    # cluster_map.get_root().html.add_child(folium.Element(cluster_links_html))
+
     cluster_map_path = f"{output_dir}/student_clusters_map.html"
     cluster_map.save(cluster_map_path)
 
@@ -268,17 +246,7 @@ async def cluster_and_route(
         icon=folium.Icon(color='green', icon='home', prefix='fa')
     ).add_to(route_map)
     
-    # Add navigation links to the route map
-    # route_links_html = f"""
-    # <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
-    #     <h4 style="margin: 5px 0; color: #3186cc;">Navigation</h4>
-    #     <ul style="padding-left: 15px; margin: 5px 0;">
-    #         <li><a href="/download_file/{trip_id}/student_locations.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View Student Locations</a></li>
-    #         <li><a href="/download_file/{trip_id}/student_clusters_map.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View Clusters Map</a></li>
-    #     </ul>
-    # </div>
-    # """
-    # route_map.get_root().html.add_child(folium.Element(route_links_html))
+
 
     for idx, (group_indices, total_students, bus_size) in enumerate(assigned_routes):
         bus_id = f"bus_{uuid.uuid4().hex[:6]}"
@@ -377,18 +345,7 @@ async def cluster_and_route(
                 icon=folium.Icon(color='blue')
             ).add_to(bus_map)
         
-        # Add navigation links to the bus map
-        # bus_links_html = f"""
-        # <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: white; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
-        #     <h4 style="margin: 5px 0; color: #3186cc;">Navigation</h4>
-        #     <ul style="padding-left: 15px; margin: 5px 0;">
-        #         <li><a href="/download_file/{trip_id}/all_bus_routes.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View All Routes</a></li>
-        #         <li><a href="/download_file/{trip_id}/student_clusters_map.html" target="_blank" style="color: #3186cc; text-decoration: underline;">View Clusters</a></li>
-        #         <li><a href="/download_file/{trip_id}/trips/{bus_id}_summary.csv" target="_blank" style="color: #3186cc; text-decoration: underline;">Download Summary</a></li>
-        #     </ul>
-        # </div>
-        # """
-        # bus_map.get_root().html.add_child(folium.Element(bus_links_html))
+
         bus_map.save(f"{trips_dir}/{bus_id}_route_map.html")
         pd.DataFrame([route_info]).to_csv(f"{trips_dir}/{bus_id}_summary.csv", index=False)
 

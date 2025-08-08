@@ -39,7 +39,7 @@ jobs:
 
       # 5. Install frontend dependencies & run Jest + RTL tests
       - name: Install frontend dependencies
-        run: cd decarb-new && npm ci
+        run: ci
 
       - name: Run frontend unit tests (Jest + RTL)
-        run: cd decarb-new && npm test -- --watchAll=false --ci --coverage
+        run: npm test -- --watchAll=false --ci --coverage
