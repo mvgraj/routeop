@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_425a293cdcb3bf5556abb3cd9f4c3da9 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_425a293cdcb3bf5556abb3cd9f4c3da9" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_425a293cdcb3bf5556abb3cd9f4c3da9 = L.map(
+                "map_425a293cdcb3bf5556abb3cd9f4c3da9",
+                {
+                    center: [25.249305716884283, 55.461551555511086],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_7c593dee3716e4b449d2daca9811ce23 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_7c593dee3716e4b449d2daca9811ce23.addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var poly_line_7163620e32e3f83911bb6aab38b9ca61 = L.polyline(
+                [[25.24877, 55.46144], [25.24921, 55.46016], [25.2517, 55.46048], [25.2528, 55.45514], [25.25698, 55.45589], [25.25751, 55.45625], [25.25781, 55.45573], [25.2315, 55.45093], [25.23111, 55.45066], [25.23152, 55.44808], [25.23166, 55.44718], [25.23429, 55.44766], [25.23208, 55.44724], [25.23242, 55.44505], [25.23255, 55.44421], [25.23214, 55.44405], [25.23238, 55.44264], [25.23274, 55.44271], [25.23238, 55.44264], [25.23266, 55.44073], [25.23333, 55.44061], [25.23306, 55.44349], [25.23331, 55.44285], [25.23392, 55.44298], [25.23414, 55.44302], [25.23406, 55.44355], [25.23444, 55.44361], [25.23546, 55.4438], [25.23406, 55.44355], [25.2345, 55.44176], [25.23426, 55.4422], [25.23344, 55.44204], [25.23344, 55.44079], [25.23417, 55.44075], [25.2351, 55.44094], [25.2442, 55.44275], [25.24611, 55.43637], [25.2475, 55.43108], [25.24397, 55.44253], [25.2421, 55.45311], [25.25256, 55.45512], [25.25172, 55.46039], [25.2503, 55.46007], [25.25002, 55.46231], [25.24876, 55.46206], [25.24877, 55.46144], [25.24877, 55.46144]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var marker_6eb7b8d512ffc2d2d082e46ab5957d83 = L.marker(
+                [25.24877, 55.46144],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_71abb75a237e31f67e8e1f183e9885c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_553a31927ffc7c1b3ffe44daeebf7202 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_77ed9a63c9aab5ce4c742b908d593f6b = $(`<div id="html_77ed9a63c9aab5ce4c742b908d593f6b" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4 style="margin: 5px 0; color: #3186cc;">Depot Start</h4>             <a href="/download_file/trip_1a436193/bus_routes_summary.csv"                 target="_blank"                 style="color: #3186cc; text-decoration: underline;">                Download Routes Summary             </a>         </div>         </div>`)[0];
+                popup_553a31927ffc7c1b3ffe44daeebf7202.setContent(html_77ed9a63c9aab5ce4c742b908d593f6b);
+            
+        
+
+        marker_6eb7b8d512ffc2d2d082e46ab5957d83.bindPopup(popup_553a31927ffc7c1b3ffe44daeebf7202)
+        ;
+
+        
+    
+    
+                marker_6eb7b8d512ffc2d2d082e46ab5957d83.setIcon(icon_71abb75a237e31f67e8e1f183e9885c9);
+            
+    
+            var marker_3a916a800939f95efddc6a0e7bdbf683 = L.marker(
+                [25.24877, 55.46144],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_2c2ee0fe01c184be2473c30a82a67931 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_668f5c44d7e6cbee6d30255002dd5391 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f96546a13f4046c23b34aecf8cad6c1f = $(`<div id="html_f96546a13f4046c23b34aecf8cad6c1f" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4 style="margin: 5px 0; color: #3186cc;">Depot End</h4>             <a href="/download_file/trip_1a436193/bus_routes_summary.csv"                 target="_blank"                 style="color: #3186cc; text-decoration: underline;">                Download Routes Summary             </a>         </div>         </div>`)[0];
+                popup_668f5c44d7e6cbee6d30255002dd5391.setContent(html_f96546a13f4046c23b34aecf8cad6c1f);
+            
+        
+
+        marker_3a916a800939f95efddc6a0e7bdbf683.bindPopup(popup_668f5c44d7e6cbee6d30255002dd5391)
+        ;
+
+        
+    
+    
+                marker_3a916a800939f95efddc6a0e7bdbf683.setIcon(icon_2c2ee0fe01c184be2473c30a82a67931);
+            
+    
+            var marker_a76d80b3ac60f980f9e6a9bd5b54209f = L.marker(
+                [25.2334375, 55.442045],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_87cd2e1443ce406231d302a6a71eefbc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_685dca1405ceaa012f864b625c19f2e5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fe4643980294159e1b97bc7a7cec8e25 = $(`<div id="html_fe4643980294159e1b97bc7a7cec8e25" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-19</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_685dca1405ceaa012f864b625c19f2e5.setContent(html_fe4643980294159e1b97bc7a7cec8e25);
+            
+        
+
+        marker_a76d80b3ac60f980f9e6a9bd5b54209f.bindPopup(popup_685dca1405ceaa012f864b625c19f2e5)
+        ;
+
+        
+    
+    
+                marker_a76d80b3ac60f980f9e6a9bd5b54209f.setIcon(icon_87cd2e1443ce406231d302a6a71eefbc);
+            
+    
+            var marker_bb8dd1aefd9a93351af055ae70600b1c = L.marker(
+                [25.23333, 55.44274],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_41a6148dacb8922bdd62c615746e2d80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e7a048cfaa7197780f787fe4add89b26 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6ead10ca148952925de9e491ff38d91a = $(`<div id="html_6ead10ca148952925de9e491ff38d91a" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-21</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_e7a048cfaa7197780f787fe4add89b26.setContent(html_6ead10ca148952925de9e491ff38d91a);
+            
+        
+
+        marker_bb8dd1aefd9a93351af055ae70600b1c.bindPopup(popup_e7a048cfaa7197780f787fe4add89b26)
+        ;
+
+        
+    
+    
+                marker_bb8dd1aefd9a93351af055ae70600b1c.setIcon(icon_41a6148dacb8922bdd62c615746e2d80);
+            
+    
+            var marker_bbb00c65c8f560f6b8aa7193621781be = L.marker(
+                [25.23276, 55.44254],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_c4eb9b9bd71c9a5c30f109569ee9c8df = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c0975e5b7453d61fe5a339500980cea = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_48cb10a7c5abbed6b5d629a88e228cc1 = $(`<div id="html_48cb10a7c5abbed6b5d629a88e228cc1" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-20</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_4c0975e5b7453d61fe5a339500980cea.setContent(html_48cb10a7c5abbed6b5d629a88e228cc1);
+            
+        
+
+        marker_bbb00c65c8f560f6b8aa7193621781be.bindPopup(popup_4c0975e5b7453d61fe5a339500980cea)
+        ;
+
+        
+    
+    
+                marker_bbb00c65c8f560f6b8aa7193621781be.setIcon(icon_c4eb9b9bd71c9a5c30f109569ee9c8df);
+            
+    
+            var marker_ae1b181aff788be26b79a9a33d00f19d = L.marker(
+                [25.23394, 55.44285],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_f54d9f22e2281e36b5f60f4f64b40798 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9eeb5f786f6a86b74a087e69b089c686 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0c80c4c1092e5ca3036681ec9fe3cd91 = $(`<div id="html_0c80c4c1092e5ca3036681ec9fe3cd91" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-23</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_9eeb5f786f6a86b74a087e69b089c686.setContent(html_0c80c4c1092e5ca3036681ec9fe3cd91);
+            
+        
+
+        marker_ae1b181aff788be26b79a9a33d00f19d.bindPopup(popup_9eeb5f786f6a86b74a087e69b089c686)
+        ;
+
+        
+    
+    
+                marker_ae1b181aff788be26b79a9a33d00f19d.setIcon(icon_f54d9f22e2281e36b5f60f4f64b40798);
+            
+    
+            var marker_ef6f61c11ad201a83d036a80ff7ee404 = L.marker(
+                [25.23452, 55.44163],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_b25718cd50772a512bf9e23b2de2d53d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_404c66dc0d9be55d9567406d13caaa56 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_db80dc94afaaafdfcd485d5e02585c7f = $(`<div id="html_db80dc94afaaafdfcd485d5e02585c7f" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-17</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_404c66dc0d9be55d9567406d13caaa56.setContent(html_db80dc94afaaafdfcd485d5e02585c7f);
+            
+        
+
+        marker_ef6f61c11ad201a83d036a80ff7ee404.bindPopup(popup_404c66dc0d9be55d9567406d13caaa56)
+        ;
+
+        
+    
+    
+                marker_ef6f61c11ad201a83d036a80ff7ee404.setIcon(icon_b25718cd50772a512bf9e23b2de2d53d);
+            
+    
+            var marker_c2b01f130c9b823e585bbcead8e1be8d = L.marker(
+                [25.23415, 55.440855],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_08468818b9f20ca92bfd2d063e8a3e81 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8b7360d2133725ddc235328cb35fa06 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_27b0192b914e550d54606da48458006d = $(`<div id="html_27b0192b914e550d54606da48458006d" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-14</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_e8b7360d2133725ddc235328cb35fa06.setContent(html_27b0192b914e550d54606da48458006d);
+            
+        
+
+        marker_c2b01f130c9b823e585bbcead8e1be8d.bindPopup(popup_e8b7360d2133725ddc235328cb35fa06)
+        ;
+
+        
+    
+    
+                marker_c2b01f130c9b823e585bbcead8e1be8d.setIcon(icon_08468818b9f20ca92bfd2d063e8a3e81);
+            
+    
+            var marker_057dd9fba65bd1bfbfa5c994611f3ba3 = L.marker(
+                [25.23294, 55.44347],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_a47b4a9243e5e9051acbb2071dcc9782 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8732d2bb688d94890f0eedbff67c0c5b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0a995e623f79751232a7be104201113 = $(`<div id="html_a0a995e623f79751232a7be104201113" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-24</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_8732d2bb688d94890f0eedbff67c0c5b.setContent(html_a0a995e623f79751232a7be104201113);
+            
+        
+
+        marker_057dd9fba65bd1bfbfa5c994611f3ba3.bindPopup(popup_8732d2bb688d94890f0eedbff67c0c5b)
+        ;
+
+        
+    
+    
+                marker_057dd9fba65bd1bfbfa5c994611f3ba3.setIcon(icon_a47b4a9243e5e9051acbb2071dcc9782);
+            
+    
+            var marker_df2b5582d904e554686e81d8527b35a6 = L.marker(
+                [25.23445, 55.443565],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_0e1c15555ddbe70cf00ecc7049715242 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fcf6244f10fed25c222a5de7d0d3eb14 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_767cc4d13b879784cdefcca9a029a59d = $(`<div id="html_767cc4d13b879784cdefcca9a029a59d" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-25</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_fcf6244f10fed25c222a5de7d0d3eb14.setContent(html_767cc4d13b879784cdefcca9a029a59d);
+            
+        
+
+        marker_df2b5582d904e554686e81d8527b35a6.bindPopup(popup_fcf6244f10fed25c222a5de7d0d3eb14)
+        ;
+
+        
+    
+    
+                marker_df2b5582d904e554686e81d8527b35a6.setIcon(icon_0e1c15555ddbe70cf00ecc7049715242);
+            
+    
+            var marker_063c6dad5d9463a39840a1b8e03caf17 = L.marker(
+                [25.2350875, 55.44103],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_ca0133ffd3047d004b9f6922ace3e51f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_656977269e89a92c5df9447e78a5c50a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a67c55841fef5f497d7c2a001c9abf9e = $(`<div id="html_a67c55841fef5f497d7c2a001c9abf9e" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-15</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_656977269e89a92c5df9447e78a5c50a.setContent(html_a67c55841fef5f497d7c2a001c9abf9e);
+            
+        
+
+        marker_063c6dad5d9463a39840a1b8e03caf17.bindPopup(popup_656977269e89a92c5df9447e78a5c50a)
+        ;
+
+        
+    
+    
+                marker_063c6dad5d9463a39840a1b8e03caf17.setIcon(icon_ca0133ffd3047d004b9f6922ace3e51f);
+            
+    
+            var marker_b7e97e71ead69bb2d14ca6469cd45b74 = L.marker(
+                [25.23547, 55.44376],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_812e557facb2a6db32b1e77911a9e5b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0868fea9799e019362682f827b47e7c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eee0aa92bff7cc87a3f210ef639bae77 = $(`<div id="html_eee0aa92bff7cc87a3f210ef639bae77" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-26</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_0868fea9799e019362682f827b47e7c7.setContent(html_eee0aa92bff7cc87a3f210ef639bae77);
+            
+        
+
+        marker_b7e97e71ead69bb2d14ca6469cd45b74.bindPopup(popup_0868fea9799e019362682f827b47e7c7)
+        ;
+
+        
+    
+    
+                marker_b7e97e71ead69bb2d14ca6469cd45b74.setIcon(icon_812e557facb2a6db32b1e77911a9e5b5);
+            
+    
+            var marker_845eb860baedce287f6edf0b72a7d77c = L.marker(
+                [25.23248, 55.44506],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_581d5d74217994192041254ea5bd46be = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_868257342ada14af69c8586ed3adb48f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2f0339b84cdf458fc95305812f4e78b2 = $(`<div id="html_2f0339b84cdf458fc95305812f4e78b2" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-27</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_868257342ada14af69c8586ed3adb48f.setContent(html_2f0339b84cdf458fc95305812f4e78b2);
+            
+        
+
+        marker_845eb860baedce287f6edf0b72a7d77c.bindPopup(popup_868257342ada14af69c8586ed3adb48f)
+        ;
+
+        
+    
+    
+                marker_845eb860baedce287f6edf0b72a7d77c.setIcon(icon_581d5d74217994192041254ea5bd46be);
+            
+    
+            var marker_70f4fb5e6dd5bd88369a90c5e2a6e234 = L.marker(
+                [25.23428, 55.44773],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_08acc0fe2c6aa11599a34bf0f968170f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_101b3195df18ad25dbba8a451c7c6c32 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1fd25041e57394be77af9ba766fea655 = $(`<div id="html_1fd25041e57394be77af9ba766fea655" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-28</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_101b3195df18ad25dbba8a451c7c6c32.setContent(html_1fd25041e57394be77af9ba766fea655);
+            
+        
+
+        marker_70f4fb5e6dd5bd88369a90c5e2a6e234.bindPopup(popup_101b3195df18ad25dbba8a451c7c6c32)
+        ;
+
+        
+    
+    
+                marker_70f4fb5e6dd5bd88369a90c5e2a6e234.setIcon(icon_08acc0fe2c6aa11599a34bf0f968170f);
+            
+    
+            var marker_c720a1acebc06e08562f16c47598c1ed = L.marker(
+                [25.23162, 55.4481],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_e02a9aa87626a41f85430ab18f86cf8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7775242227a9d8a7cee957c4cee1a64b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0eaf99b3ad3e1020ed8a26d7ee607b42 = $(`<div id="html_0eaf99b3ad3e1020ed8a26d7ee607b42" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-29</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_7775242227a9d8a7cee957c4cee1a64b.setContent(html_0eaf99b3ad3e1020ed8a26d7ee607b42);
+            
+        
+
+        marker_c720a1acebc06e08562f16c47598c1ed.bindPopup(popup_7775242227a9d8a7cee957c4cee1a64b)
+        ;
+
+        
+    
+    
+                marker_c720a1acebc06e08562f16c47598c1ed.setIcon(icon_e02a9aa87626a41f85430ab18f86cf8b);
+            
+    
+            var marker_67cda28446e40995350a18cbb2585174 = L.marker(
+                [25.24617, 55.43639],
+                {
+}
+            ).addTo(map_425a293cdcb3bf5556abb3cd9f4c3da9);
+        
+    
+            var icon_5ea6da4639dc744837dddbf33cfe5aef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_387ddba5b24f2b8aeefc54957655c413 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cd15568479b367f8af0747dfc6c0b209 = $(`<div id="html_cd15568479b367f8af0747dfc6c0b209" style="width: 100.0%; height: 100.0%;">             <div style="width: 200px;">                 <h4 style="margin: 5px 0; color: #3186cc;">Pickup-37</h4>                 <a href="/download_file/trip_1a436193/students_with_clusters.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Student Data                 </a><br>                 <a href="/download_file/trip_1a436193/trips/bus_22c127_summary.csv"                     target="_blank"                     style="color: #3186cc; text-decoration: underline;">                    Bus Summary                 </a>             </div>             </div>`)[0];
+                popup_387ddba5b24f2b8aeefc54957655c413.setContent(html_cd15568479b367f8af0747dfc6c0b209);
+            
+        
+
+        marker_67cda28446e40995350a18cbb2585174.bindPopup(popup_387ddba5b24f2b8aeefc54957655c413)
+        ;
+
+        
+    
+    
+                marker_67cda28446e40995350a18cbb2585174.setIcon(icon_5ea6da4639dc744837dddbf33cfe5aef);
+            
+</script>
+</html>

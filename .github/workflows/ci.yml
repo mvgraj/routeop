@@ -1,0 +1,45 @@
+name: FastAPI + React CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Setup Python for FastAPI backend
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      # 3. Install backend dependencies & run pytest
+      - name: Install backend dependencies
+        run: |
+          cd API
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run backend tests (pytest)
+        run: cd API && pytest --maxfail=1 --disable-warnings -q
+
+      # 4. Setup Node.js for React frontend
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # 5. Install frontend dependencies & run Jest + RTL tests
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+
+      - name: Run frontend unit tests (Jest + RTL)
+        run: cd frontend && npm test -- --watchAll=false --ci --coverage
