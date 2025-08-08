@@ -37,11 +37,13 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: "decarb-new/"
-          
+          working-directory: ./decarb-new
+
       # 5. Install frontend dependencies & run Jest + RTL tests
       - name: Install frontend dependencies
-        run: cd decarb-new && npm ci
+        run: npm ci
+        working-directory: ./decarb-new
 
       - name: Run frontend unit tests (Jest + RTL)
-        run: cd decarb-new && npm test -- --watchAll=false --ci --coverage
+        run: npm test -- --watchAll=false --ci --coverage
+        working-directory: ./decarb-new
